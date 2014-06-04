@@ -34,3 +34,9 @@ hash screen 2> /dev/null && export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
 
 # Less history file location
 export LESSHISTFILE="$XDG_CACHE_HOME/less_history"
+
+# node.js NPM
+if hash npm 2>/dev/null
+then
+	export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+fi
