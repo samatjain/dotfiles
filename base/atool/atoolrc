@@ -1,0 +1,6 @@
+# Use parallel gzip
+use_tar_z_option 0
+path_gzip pigz
+# Use parallel bzip2
+use_tar_bzip2_option 0
+use_pbzip2 1
