@@ -1,0 +1,6 @@
+#!/bin/sh
+
+ln -sf $XDG_CONFIG_HOME/bash/bashrc ~/.bashrc
+
+# Quiet login (disable MOTD, banner, etc)
+touch ~/.hushlogin

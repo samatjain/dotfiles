@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mkdir -p "$XDG_CACHE_HOME/pip/downloads"
+mkdir -p "$XDG_CACHE_HOME/pip/wheel"

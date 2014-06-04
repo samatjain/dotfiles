@@ -1,0 +1,24 @@
+startup_message off
+
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%?%{wk}%-Lw%?%{yK}%n*%f %t%?(%u)%?%?%{wk}%+Lw%? %{gk}%=%c %{yk}%d/%M/%Y"
+
+# Allows root to attach to this user's screen sessions
+multiuser on
+addacl root
+
+# Reset ssh-agent info (see: http://www.jukie.net/~bart/blog/screen-ssh-agent)
+unsetenv SSH_AUTH_SOCK
+setenv SSH_AUTH_SOCK "$HOME/.screen/ssh-auth-sock.$HOSTNAME"
+
+# 256-color support (see: http://frexx.de/xterm-256-notes/)
+## terminfo and termcap for nice 256 color terminal
+## allow bold colors - necessary for some reason
+#attrcolor b ".I"
+## tell screen how to set colors. AB = background, AF=foreground
+#termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+## erase background with current bg color
+#defbce "on"
+#
+##term "screen-256color"

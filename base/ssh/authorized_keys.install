@@ -1,0 +1,8 @@
+#!/bin/sh
+
+mkdir -p ~/.ssh/
+ln -sf $XDG_CONFIG_HOME/ssh/authorized_keys ~/.ssh/
+
+## Secure file
+#chmod 400 $XDG_CONFIG_HOME/ssh/authorized_keys
+#sudo chattr +i $XDG_CONFIG_HOME/ssh/authorized_keys

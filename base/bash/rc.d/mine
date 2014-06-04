@@ -1,0 +1,216 @@
+shopt -s dotglob
+shopt -s nocaseglob
+shopt -s checkwinsize  # Check window size after every command
+shopt -s cdspell       # 'cd' spelling correction
+shopt -s cmdhist
+shopt -s extglob
+shopt -u mailwarn	     # Turn off new mail notification
+shopt -s histappend
+unset MAILCHECK
+
+# Make less more friendly for non-text input files, see lesspipe(1)
+[ -x $(which lesspipe) ] && eval "$(lesspipe)"
+
+# Fix backspace problems
+if [ -t 0 ]; then
+	stty erase ^?
+fi
+
+alias ls="ls --color=auto -b -T 0 -h"
+alias ll="ls --color=auto -b -T 0 -l -h"
+alias lll="ls --color=yes -b -T 0 -l -h | less -r"
+alias la="ls --color=auto -b -T 0 -l -h -A"
+alias sl=ls
+alias less="less -rfsm"
+alias cls="clear"
+alias vim="vim -X"
+alias ..="cd .."
+alias e="$EDITOR"
+alias kj="kill -15 %1"
+alias kkj="kill -9 %1"
+alias p="$PAGER"
+#     May want to use nmap -O, -v, and -A
+alias xnmap="nmap -PN -T4"
+alias sudo="sudo "
+alias syslog="tail /var/log/syslog"
+alias pretty-json="python -m json.tool"
+
+# Generate random password of 16 characters & spell with military alphabet
+alias random-password="apg -m 16 -l -n 1"
+
+# Enable color for minicom
+alias minicom="minicom -c on"
+
+alias ssh-no-hostkey="ssh -o 'StrictHostKeyChecking no'"
+
+# Save link to ssh-agent
+#function _ssh_auth_save()
+#{
+#	if [ -n "$SSH_AUTH_SOCK" ] && [ -r "$SSH_AUTH_SOCK" ]; then
+#		ln -sf "$SSH_AUTH_SOCK" "$HOME/.screen/ssh-auth-sock.$HOSTNAME"
+#	fi
+#}
+#alias screen='_ssh_auth_save; export HOSTNAME=$(hostname); screen'
+
+# from http://tychoish.com/rhizome/9-awesome-ssh-tricks/
+function ssh-reagent() {
+	for agent in /tmp/ssh-*/agent.*; do
+		export SSH_AUTH_SOCK=$agent
+		if ssh-add -l 2>&1 > /dev/null; then
+			echo Found working SSH Agent:
+			ssh-add -l
+			return
+		fi
+	done
+	echo Cannot find ssh agent - maybe you should reconnect and forward it?
+}
+
+################################################################################
+
+# set default prompt
+if [ $TERM = "linux" ]; then
+	PS1="\[\033[1;31m\]\u\[\033[1;37m\]@\[\033[1;32m\]\h\[\033[1;37m\]:\[\033[0;37m\]\w\n\[\033[0;1;30m\]\t\[\033[1;37m\] \\$\[\033[0m\] "
+else
+	PS1="\[\e]2;\u@\h:\w\a\\]\[\033[1;31m\]\u\[\033[1;37m\]@\[\033[1;32m\]\h\[\033[1;37m\]:\[\033[0;37m\]\w\n\[\033[0;1;30m\]\t\[\033[1;37m\] \\$\[\033[0m\] "
+fi
+
+################################################################################
+
+function simple-prompt() { PS1='[\t \u@\h \W]$ '; }
+function cl() { cd $1; ls; }
+function mdcd() { mkdir $1; cd $1; }
+function date-stamp() { date +%Y%m%d; }
+function time-stamp() { date +%Y%m%d-%H%M%S; }
+function readable-time-stamp() { date '+%Y%m%d-%H%M%S-%a-%b-%d-%Y' | tr '[A-Z]' '[a-z]'; }
+
+# e.g prepend PATH /usr/local/bin
+function prepend() { [ -d "$2" ] && eval $1=\"$2\$\{$1:+':'\$$1\}\" && export $1 ; }
+
+# Remove all characters that need be escaped from a string
+function remove_annoying_chars()
+{
+	echo $(echo $1 | tr -d "[\`\:\?\!\",']" | tr "[()\ ]" _  | tr -s "_*" "_" | sed "s/[\&+]/and/g")
+}
+
+# Remove all characters that need be escaped from all files in current dir
+function fix-filenames()
+{
+	for f in *; do
+		mv "$f" "$(remove_annoying_chars "$f")" &> /dev/null
+	done
+}
+
+function fix-filenames-lowercase()
+{
+	for f in *; do
+		mv "$f" "$(remove_annoying_chars "$f" | tr "[A-Z]" "[a-z]")" &> /dev/null
+	done
+}
+
+
+# Find a file with a pattern in name
+# Usage: ff <pattern>
+function ff() {
+	find . -type f -iname '*'$*'*'
+}
+
+# Find a file with pattern $1 in name and Execute $2 on it
+# Usage: fe <pattern> <command>
+function fe() {
+	echo find . -type f -iname '*'$1'*' -exec "${2:-file}" {} \; 
+	find . -type f -iname '*'$1'*' -exec "${2:-file}" {} \; 
+}
+
+function my-ps() {
+	ps $@ x -u $USER -o pid,%cpu,%mem,command | grep -v "ps" | sort -n
+}
+
+# Repeat a command n times
+# Usage: repeat <n> <command>
+function repeat()
+{
+	local i max
+	max=$1; shift;
+	for ((i=1; i <= max ; i++)); do  # --> C-like syntax
+		eval "$@";
+	done
+}
+
+function dos2unix()
+{
+	mv "$1" "$1.dos"
+	sed 's/.$//gi' "$1.dos" > "$1"
+}
+
+function mac2unix()
+{
+	mv "$1" "$1.mac"
+	sed 's/\r/\n/gi' "$1.mac" > "$1"
+}
+
+# Print the full path to a file
+function fp() {
+	if [ -n "$1" ]; then
+		readlink -f $1
+	else
+		readlink -f .
+	fi
+}
+#alias fp='readlink -f'
+#function fp() {
+#	echo `pwd`/$1
+#}
+
+# Print the full path to a file, including hostname
+function fpr() {
+#	echo `hostname`:`pwd`/$1
+	echo $(hostname):$(fp $@)
+}
+
+function highlight() {
+	e="$1"; shift; grep --col=always -Eih "$e|$" "$@";
+}
+
+# Create and change into a directory
+function md() {
+	mkdir -p "$1" && cd "$!"
+}
+
+# Store current path in X clipboard buffer
+#  from http://www.jukie.net/~bart/blog/20090504101605
+function xpwd() {
+	echo $PWD | xclip -i
+	xclip -o
+}
+
+# CD to directory in X clipboard buffer
+#  from http://www.jukie.net/~bart/blog/20090504101605
+function xcd() {
+	cd $(xclip -o)
+}
+
+# root user stuff
+if [ "`id -u`" = "0" ]; then
+	# Set red-colored prompt
+	PS1="\[\033[1;31m\]\u@\h:\[\033[0;31m\]\w\n\[\033[0;1;30m\]\t \[\033[1;31m\]\\$\[\033[0m\] "
+fi
+
+# Source local configurations
+for file in "$HOME/sys/config/"*.sh; do
+	if [ -x "$file" ]; then
+		source "$file"
+	fi
+done
+
+# Source SSH agent environment
+if [ -f "$HOME/.keychain/$(hostname)-sh" ]; then
+	source "$HOME/.keychain/$(hostname)-sh"
+fi
+
+# Source bash-completion if not sourced already
+#if [ -z "$BASH_COMPLETION" ] && [ -f /etc/bash_completion ]; then
+#	source /etc/bash_completion
+#fi
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

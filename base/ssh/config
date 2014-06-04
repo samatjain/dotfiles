@@ -1,0 +1,152 @@
+##############################################################################
+# trusted
+##############################################################################
+
+Host *.local
+	ForwardAgent yes
+	ForwardX11 yes
+	ForwardX11Trusted yes
+	# Allow IPv6 when on LANs
+	AddressFamily any
+Host *.home
+	ForwardAgent yes
+	ForwardX11 yes
+	ForwardX11Trusted yes
+	# Allow IPv6 when on LANs
+	AddressFamily any
+Host machina
+	Hostname machina.hotnudiegirls.com
+	User xjjk
+	ForwardAgent yes
+Host sobk
+	Hostname anubis.hotnudiegirls.com
+	User xjjk
+	ForwardAgent yes
+	ProxyCommand ssh -W %h:%p sobk.local
+Host sun-ra
+	Hostname sun-ra.hotnudiegirls.com
+	User xjjk
+	ForwardAgent yes
+Host caligula
+	Hostname caligula.hotnudiegirls.com
+	User xjjk
+	ForwardAgent yes
+Host claudius
+	Hostname claudius.hotnudiegirls.com
+	User xjjk
+	ForwardAgent yes
+Host nero
+	Hostname nero.hotnudiegirls.com
+	User xjjk
+	ForwardAgent yes
+Host anubis
+	Hostname anubis.hotnudiegirls.com
+	User xjjk
+	ForwardAgent yes
+Host ruidoso
+	Hostname ruidoso.hotnudiegirls.com
+	User xjjk
+Host razzputin
+	Hostname razzputin.hotnudiegirls.com
+	User xjjk
+	ForwardAgent yes
+	LocalForward 2777 localhost:2777
+	LocalForward 2778 localhost:2778
+	LocalForward 2779 localhost:2779
+
+##############################################################################
+# other
+##############################################################################
+
+Host greenshare.co
+	IdentityFile ~/.ssh/aws.pem
+
+Host dev.laptop.org
+	IdentityFile ~/.ssh/olpc
+
+Host heroku.com
+	IdentityFile ~/.ssh/id_rsa
+
+##############################################################################
+# splunk
+##############################################################################
+
+Host tiny
+	User sjain
+	Hostname tiny.splunk.com
+
+Host cave
+	User sjain
+	Hostname cave.splunk.com
+
+##############################################################################
+# academic
+##############################################################################
+
+Host io
+	User skj7001
+	Hostname io.dbmi.columbia.edu
+
+Host bitwise
+	User skj7001
+	Hostname bitwise.dbmi.columbia.edu
+
+Host empower
+	User skj7001
+	Hostname empower.dbmi.columbia.edu
+
+Host empstage
+	User skj7001
+	Hostname empstage.dbmi.columbia.edu
+
+Host empdev
+	User skj7001
+	Hostname empdev.dbmi.columbia.edu
+
+Host empdata
+	User skj7001
+	Hostname empdata.dbmi.columbia.edu
+
+Host ezvacdev
+	User skj7001
+	Hostname ezvacdev.cpmc.columbia.edu
+
+Host cs.columbia
+	User skj2108
+	Hostname clic.cs.columbia.edu
+
+Host cs.nmsu
+#Hostname viper.cs.nmsu.edu
+	Hostname turing.cs.nmsu.edu
+	User sjain
+
+Host darwin
+	Hostname darwin.nmsu.edu
+	User sjain
+
+Host razz
+	Hostname natbrook2da9.nmsu.edu
+
+##############################################################################
+# Generic
+##############################################################################
+
+Host *
+	CanonicalizeHostname yes
+	CanonicalDomains local hotnudiegirls.com
+	CanonicalizeMaxDots 0
+	ServerAliveInterval 20
+	ServerAliveCountMax 2
+	# Speed up encryption
+	Ciphers chacha20-poly1305@openssh.com,blowfish-cbc,aes128-cbc
+	#Ciphers arcfour,blowfish-cbc,aes128-cbc
+	#MACs umac-64@openssh.com,hmac-md5,hmac-sha1 # Insecure?
+	MACs hmac-sha2-256-etm@openssh.com,hmac-ripemd160,hmac-sha1
+	Compression yes
+	ControlMaster auto
+	ControlPersist yes
+	ControlPath ~/.cache/ssh/control-sockets/remote-mux-%r@%h:%p
+	HashKnownHosts no
+	# Lookup IPv4 hostnames only
+	AddressFamily inet
+	UserKnownHostsFile ~/.cache/ssh/known_hosts

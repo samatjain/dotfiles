@@ -1,0 +1,115 @@
+:source $VIMRUNTIME/vimrc_example.vim
+
+" Follow XDG directory specifications
+let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
+set viminfo+=n$XDG_CACHE_HOME/viminfo
+set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$XDG_CONFIG_HOME/vim/bundle/vundle
+
+" Store temporary files in a single location
+if has("win32")
+	set directory=$TEMP
+else
+	set directory=$HOME/.cache/vim
+end
+
+set number                      " line numbering
+set nocompatible                " make sure out of horrid vi-compatible mode
+
+set fileformats=unix,dos,mac    " support all 3 types of newlines in this order
+
+set dict=/usr/share/dict/words  " used for word completion
+set magic                       " use extended regular expressions (\s\+)
+set noerrorbells                " turn off beep
+set noexrc                      " do not read ~/.exrc
+
+" search settings
+set incsearch                   " turn on incremental searching
+set ignorecase                  " only be case-sensitive when the expression
+set smartcase                   "  contains a capital
+
+"set autowrite
+set nobackup
+
+set linebreak
+"set textwidth=80
+
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set noexpandtab
+set smarttab                    " use tabs at start of line, spaces elsewhere
+set backspace=indent,eol,start  " allow backspace over EOL and SOL
+"retab                           " Fix tabbing for current file
+
+set background=dark             " better contrast on dark backgrounds
+colorscheme peachpuff
+
+" disable mouse in Vim 7
+set mouse=
+
+" Set leader
+let mapleader=","
+
+" Display trailing whitespace
+" Toggle with ,s
+"set listchars=tab:>-,trail:·,eol:$
+set listchars=tab:»·,trail:·,precedes:<,extends:>
+nmap <silent> <leader>s :set nolist!<CR>
+
+" default to UTF-8 encoding
+set encoding=utf8
+set fileencoding=utf8
+
+au BufNewFile,BufRead *.rst set ft=rest                    " ReStructured Text
+au BufNewFile,BufRead *.module,*.install,*.theme setf php  " Drupal
+
+au BufNewFile,BufRead /etc/nginx/* set ft=nginx
+au BufNewFile,BufRead /var/log/* set ft=messages
+
+au BufEnter * :syntax sync fromstart  " Force syntax highlighting
+au FileType make setlocal noexpandtab " Disable expandtab for Makefiles
+
+inoremap <Nul> <C-x><C-o>             " Remap Ctrl+X/Ctrl+O to Ctrl+Space
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tabbing settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType python 
+	\set tabstop=4|
+	\set shiftwidth=4|
+	\set softtabstop=4|
+	\set expandtab|
+	\set omnifunc=pythoncomplete#Complete
+
+autocmd BufEnter ?akefile* set noet ts=2 sw=2
+autocmd BufEnter */debian/rules set noet ts=2 sw=2
+
+if version >= 700
+	function Kees_settabs()
+		if len(filter(getbufline(winbufnr(0), 1, "$"), 'v:val =~ "^\t"')) > len(filter(getbufline(winbufnr(0), 1, "$"), 'v:val =~ "^ "'))
+				set noet ts=2 sw=2
+		endif
+	endfunction
+	autocmd BufReadPost * call Kees_settabs()
+endif
+
+if $TERM=='screen'
+exe "set title titlestring=vim:%f"
+exe "set title t_ts=\<ESC>k t_fs=\<ESC>\\"
+let &titleold=substitute(getcwd(), $HOME, "~", '')
+endif
+
+" Force write as root w/ w!! when saving as wrong user
+cmap w!! %!sudo tee > /dev/null %
+
+execute pathogen#infect()
+
+function! NumberToggle()
+	if(&relativenumber == 1)
+		set number
+	else
+		set relativenumber
+	endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>

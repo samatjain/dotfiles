@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Remove old cache directory
+rm -rf ~/.vim/tmp
+
+# Create new cache directory
+mkdir -p ~/.cache/vim/

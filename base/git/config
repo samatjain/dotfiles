@@ -1,0 +1,50 @@
+[user]
+	name = Samat K Jain
+	email = samat@samat.org
+#[core]
+#	excludesfile = ~/.config/git/ignore
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+	ui = auto
+[alias]
+	st = status -s
+	ci = commit
+	co = checkout
+	br = branch
+	diff = diff --word-diff
+	dc = diff --cached
+	# Amends the previous commit, reusing the previous commit message
+	#  from http://www.jukie.net/~bart/blog/20090409155905
+	amend = commit --amend -C HEAD
+	# Various commit listings…
+	#  from http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+	ls = log --pretty=format:"%C(auto,yellow)%h%C(auto,red)%d\\ %C(auto,reset)%s%C(auto,blue)\\ [%cn]" --decorate
+	ll = log --pretty=format:"%C(auto,yellow)%h%C(auto,red)%d\\ %C(auto,reset)%s%C(auto,blue)\\ [%cn]" --decorate --numstat
+	lds = log --pretty=format:"%C(auto,yellow)%h\\ %ad%C(auto,red)%d\\ %C(auto,reset)%s%C(auto,blue)\\ [%cn]" --decorate --date=short
+	ld = log --pretty=format:"%C(auto,yellow)%h\\ %ad%C(auto,red)%d\\ %C(auto,reset)%s%C(auto,blue)\\ [%cn]" --decorate --date=relative
+	grep = grep -Ii
+	# Ignore file that are tracked, but do not commit changes
+	assume = update-index --assume-unchanged
+	unassume = update-index --no-assume-unchanged
+	assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+	unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
+
+	# All commits related to a file
+	filelog = log -u
+[diff "odf"]
+	# Text diff for OpenDocument files; requires repository changes as well
+	#  from http://git.or.cz/gitwiki/GitTips#HowtousegittotrackOpenDocument.28OpenOffice.2CKoffice.29files.3F
+	textconv=odt2txt
+[giggle]
+	main-window-maximized = true
+	main-window-geometry = 803x738+160+162
+	history-view-vpane-position = 519
+	main-window-view = HistoryView
+	file-view-vpane-position = 869
+[github]
+	user = samatjain
+	token = d852036ca6a274096056b7ed097318ee
+[push]
+	default = simple
