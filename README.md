@@ -31,5 +31,5 @@ README](https://github.com/EvanPurkhiser/dots/blob/master/README.md).
 
 Files in this repository have been inspired by:
 
- * My own dotfiles, littered across many different types of machines˙
+ * My own dotfiles, littered across many different types of machines
  * [Evan Purkhiser's dotfiles-personal](https://github.com/EvanPurkhiser/dots-personal/) (since he's the creator of dots)
