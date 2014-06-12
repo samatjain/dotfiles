@@ -1,5 +1,54 @@
 [[ "$-" == *i* ]] || return
 
+PATH=$HOME/sys/bin:/sbin:/usr/sbin:/usr/local/sbin:$PATH
+
+# Setup colorisation for ls
+eval $(dircolors -b)
+
+#export CDPATH=".:~"
+export HISTIGNORE="ls:clear"
+export HISTCONTROL="ignoredups"
+
+# This, along with shopt -s histappend, stores history from all shells into
+#  a single file
+export PROMPT_COMMAND="history -a"
+
+# Turn off autossh's built-in heuristics
+export AUTOSSH_GATETIME=0
+export AUTOSSH_PORT=0
+
+# Colored grep
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;33'
+
+# Tell less not to beep and also display colours
+export LESS="-QR"
+
+# Vim, disable X support
+export VISUAL="vim -X"
+export EDITOR=${VISUAL}
+
+# Default web browser
+export BROWSER=firefox
+
+# Store since state file
+export SINCE=$HOME/.cache/since/since
+
+# For Debian/Ubuntu's bug reporting tool
+export REPORTBUGMAIL="debian@samat.org"
+
+# Source keychain (ssh-agent and gpg-agent) environment
+#  Machine is responsible for both SSH and GnuPG
+if [ -f "$HOME/.keychain/$(hostname)-sh-gpg" ]; then
+        keychain --nocolor --quiet "$HOME/.ssh/id_ed25519" "$HOME/.ssh/id_ecdsa" "$HOME/.ssh/id_rsa" 4A456FBA
+        source "$HOME/.keychain/$(hostname)-sh"
+        source "$HOME/.keychain/$(hostname)-sh-gpg"
+#  Machine is only responsible for SSH
+elif [ -f "$HOME/.keychain/$(hostname)-sh" ]; then
+        keychain --nocolor --quiet "$HOME/.ssh/id_ed25519" "$HOME/.ssh/id_ecdsa" "$HOME/.ssh/id_rsa"
+        source "$HOME/.keychain/$(hostname)-sh"
+fi
+
 for file in ~/.config/{shell,bash}/profile.d/*; do
     [[ -e $file ]] && . "$file"
 done
