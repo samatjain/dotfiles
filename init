@@ -2,8 +2,8 @@
 #
 # Initialize a dotfile repository using the dots manager
 #
-# 1. Create the $HOME/.local/lib directory
-# 2. Clone the dots manager tool into the lib directory
+# 1. Create the $HOME/src/git.other directory
+# 2. Clone the dots manager tool into this directory
 # 3. Kick off the dots/contrib/initialize script to handle the rest of the setup
 #    of the dotfiles. The DOTS_CLONE_DIR environment will be set for this
 #
@@ -11,17 +11,120 @@
 [[ $_ == $0 ]] && echo "Please source me!" && exit 1
 
 # XDG directories
-export XDG_CONFIG_HOME="{$XDG_CONFIG_HOME:-$HOME/.config}"
-export  XDG_CACHE_HOME="{$XDG_CACHE_HOME:-$HOME/.cache}"
-export   XDG_DATA_HOME="{$XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export  XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export   XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 
 # Clone the dots manager utility
-if [[ ! -d "$HOME/.local/lib/dots" ]]
+if [[ ! -d "$HOME/src/git.other/dots" ]]
 then
 	echo -e "\033[0;32m==>\033[0m Installing dots managment utility"
-	git clone -q https://github.com/EvanPurkhiser/dots "$HOME/.local/lib/dots"
+	git clone -q https://github.com/EvanPurkhiser/dots "$HOME/src/git.other/dots"
 fi
 
 # Setup the environment for the new dots repository
 DOTS_CLONE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "$HOME/.local/lib/dots/contrib/initialize"
+
+# Make sure target directories exist
+mkdir -p "$XDG_CONFIG_HOME" "$XDG_CACHE_HOME" "$XDG_DATA_HOME"
+mkdir -p "$HOME/sys/bin" "$HOME/src/git.other"
+
+# dots expects stuff in ~/.local/etc/… create symlink so stuff stays working
+# will be replaced by config option in future version of dots
+ln -s "$HOME/src/git.other/dotfiles" "$HOME/.local/etc"
+
+# contrib/initalize script
+
+# Initalization script which will do a few things:
+#
+#  1. Move the cloned dotfiles directory into $HOME/src/git.other/dotfiles
+#  2. Link the dots executable into $HOME/sys/bin
+#  3. Add the $HOME/sys/bin directory to the $PATH if it isn't already
+#  4. Source the dots/contrib/bash_completion script
+#
+# The `DOTS_CLONE_DIR` environment should be set to the
+#
+# This script MUST be sourced!
+
+__dots_init()
+{
+	local arrow_bad="\033[0;31m==>\033[0m"
+	local arrow_good="\033[0;32m==>\033[0m"
+	local arrow_warn="\033[0;33m==>\033[0m"
+
+	if [[ -z "$DOTS_CLONE_DIR" ]]
+	then
+		echo -e "$arrow_bad \$DOTS_CLONE_DIR must be set to the dots repository being setup"
+		return
+	fi
+
+	# The directory containing the cloned dotfiles to setup
+	local cloned_dir="$DOTS_CLONE_DIR"
+
+	# The dots utility directory
+	local dots_util_dir="$(cd "$HOME/src/git.other/dots/" && git rev-parse --show-toplevel)"
+
+	# The installation directory
+	local install_dir="$HOME/src/git.other/dotfiles"
+
+	# The directory where the user keeps his executables
+	local bin_dir="$HOME/sys/bin"
+
+	# 1. Move everything into the install directory if we need to
+	if [[ "$install_dir" != "$cloned_dir" ]]
+	then
+		# Make sure the installation directory isn't in use
+		if [ -e "$install_dir" ] && ! find "$install_dir" -maxdepth 0 -empty | read v
+		then
+			echo -e "$arrow_bad $install_dir directory not empty"
+			return
+		fi
+
+		# Move everything over
+		echo -e "$arrow_good Moving $cloned_dir to $install_dir"
+
+		# 1. Create the directory tree up to the install directory
+		# 2. Remove the empty install_dir base directory so we can move the
+		#    cloned_dir into its place instead of inside of it
+		mkdir -p "$install_dir"
+		rm -rf "$install_dir"
+		mv -f  "$cloned_dir" "$install_dir"
+
+		# Get out of the empty directory if we were in it
+		[[ "$(pwd)" == "$cloned_dir" ]] && cd
+	fi
+
+	# 2. Link the dots script into the users local bin
+	if [[ ! -e "$bin_dir/dots" ]]
+	then
+		echo -e "$arrow_good Linking $install_dir/dots into $bin_dir"
+		mkdir -p "$bin_dir"
+		ln -s "$dots_util_dir/bin/dots" "$bin_dir/"
+
+	# If the dots file already exists in bin check if it's not the same
+	elif [[ "$(readlink "$bin_dir/dots")" != "$dots_util_dir/bin/dots" ]]
+	then
+		echo -e "$arrow_warn $bin_dir/dots already exists!"
+	fi
+
+	# 3. Add the bin directory to the front of the path
+	if [[ ":$PATH:" != *":$bin_dir:"* ]]
+	then
+		echo -e "$arrow_good Temporarily adding $bin_dir to your PATH"
+		PATH="$HOME/sys/bin:$PATH"
+	fi
+
+	# 4. Source in the dots completion
+	if ! type -t __dots_completions | grep -q '^function$' 2>/dev/null
+	then
+		echo -e "$arrow_good Sourcing bash completions for dots"
+		source "$dots_util_dir/contrib/bash_completion"
+	fi
+
+	echo -e "$arrow_good Dot files ready to be installed!"
+}
+
+__dots_init
+
+unset -f __dots_init
+unset DOTS_CLONE_DIR
