@@ -23,6 +23,9 @@ export VIMDOTDIR="$XDG_CONFIG_HOME/vim"
 # Look for terminfo files under data
 [ -d "$XDG_DATA_HOME/terminfo" ] && export TERMINFO="$XDG_DATA_HOME/terminfo"
 
+# httpie
+hash http       2>/dev/null && export HTTPIE_CONFIG_DIR="$XDG_CONFIG_HOME/httpie"
+
 # GNU PGP configuration directory
 hash gpg 2> /dev/null && export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 
