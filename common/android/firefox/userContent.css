@@ -1,0 +1,10 @@
+body,
+p,
+li,
+div,
+code,
+textarea
+{
+  line-height: 1em;
+  letter-spacing: -0.01em;
+}

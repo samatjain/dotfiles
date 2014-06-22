@@ -1,0 +1,5 @@
+#!/bin/sh
+
+su
+cp userContent.css /data/data/org.mozilla.fennec/files/mozilla/*/chrome/
+cp userChrome.css  /data/data/org.mozilla.fennec/files/mozilla/*/chrome/
