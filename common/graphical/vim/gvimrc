@@ -1,0 +1,42 @@
+set ch=2                        " Command-line two lines high
+
+set mouse=a
+set mousehide                   " Hide mouse when typing text
+
+map <S-Insert> <MiddleMouse>    " Make Shift+Insert work like in xterm
+map! <S-Insert> <MiddleMouse>
+
+let c_comment_strings=1         " Highlight strings in C comments
+set hlsearch                    " Search pattern highlighting
+set number                      " Line numering
+
+set spell                       " Spellchecking
+
+" Disable blinking cursor
+let &guicursor = &guicursor . ",a:blinkon0"
+
+"set guifont=Monospace\ 12
+"set guifont=Inconsolata\ Medium\ 14.5
+"set guifont=Inconsolata\ Medium\ 15.4
+#set guifont=Ubuntu\ Mono\ 15.4
+"set guifont=Meslo\ LG\ S\ DZ\ 12.9
+set guifont=Oxygen\ Mono\ 13
+"set guifont=Lekton\ 15.4
+"set guifont=Envy\ Code\ R\ 12
+"set guifont=Droid\ Sans\ Mono\ 12
+"set guifont=Aurulent\ Sans\ Mono\ 10
+"set guifont=Lucida\ Sans\ Typewriter\ Std\ 13.5
+"set guifont=Lucida\ Console\ Thin\\,\ 12
+"colorscheme desert
+"colorscheme literal_tango
+colorscheme Tomorrow-Night-Bright
+
+" Override colorscheme things
+"highlight Normal guibg=black
+"highlight Cursor guibg=Orange guifg=NONE
+"highlight lCursor guibg=Cyan guifg=NONE
+"highlight NonText guibg=black
+"highlight Constant gui=NONE guibg=grey45
+"highlight Special gui=NONE guibg=grey45
+highlight Constant gui=NONE guibg=black
+highlight Special gui=NONE guibg=black

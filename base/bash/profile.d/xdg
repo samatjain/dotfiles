@@ -18,6 +18,7 @@ export INPUTRC="$XDG_CONFIG_HOME/bash/inputrc"
 
 # Specify vimrc path
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+export GVIMINIT='let $MYGVIMRC="$XDG_CONFIG_HOME/vim/gvimrc" | source $GMYVIMRC'
 export VIMDOTDIR="$XDG_CONFIG_HOME/vim"
 
 # Look for terminfo files under data
