@@ -3,26 +3,17 @@
 The configuration files in this repository are meant to be installed and managed with
 [Evan Purkhiser's `dots` utility](https://github.com/EvanPurkhiser/dots).
 
-### Setting Up Your Dotfiles
+### Installation
 
- 1. Create configuration groups as you see fit. All directories aside from the
-    `base` directory should contain a second directory in them representing a
-    sub-configuration group.
+To install these files on a new machine (copy & paste the below):
 
-    For example you could have a `machines/desktop` configuration group for
-    your desktop and a `machines/laptop` configuration group for your laptop.
-    You could also for example have a `common/develop` for configuration files
-    specifically used for development tools.
-
- 2. Organize your dotfiles into their respective configuration groups.
-
- 3. Execute `source init` to install the dots manager and initialize your
-    dotfiles into ther directories.
-
- 4. Execute `dots groups set [list of groups here]` then `dots install`.
-
- 5. Enjoy your organized dotfiles!
-
+    mkdir -p ~/src/git.other/
+    cd ~/src/git.other/
+    git clone https://github.com/samatjain/dotfiles.git
+    cd dotfiles
+    source init-dots
+    dots set groups base # Set addtl groups as necessary
+    dots install
 
 While not required, it's recommended to read through the [dots
 README](https://github.com/EvanPurkhiser/dots/blob/master/README.md).
