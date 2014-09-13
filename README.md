@@ -12,7 +12,7 @@ To install these files on a new machine (copy & paste the below):
     git clone https://github.com/samatjain/dotfiles.git
     cd dotfiles
     source init-dots
-    dots set groups base # Set addtl groups as necessary
+    dots groups set base # Set addtl groups as necessary
     dots install
 
 While not required, it's recommended to read through the [dots
