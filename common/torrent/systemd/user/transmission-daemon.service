@@ -1,0 +1,11 @@
+[Unit]
+Description=Transmission BitTorrent Daemon for %u
+After=network.target
+
+[Service]
+IOSchedulingClass=idle
+ExecStart=/usr/bin/transmission-daemon -f
+ExecReload=/bin/kill -s HUP $MAINPID
+
+[Install]
+WantedBy=default.target
