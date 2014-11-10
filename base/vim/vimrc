@@ -4,6 +4,7 @@
 let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 set viminfo+=n$XDG_CACHE_HOME/viminfo
 set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$XDG_CONFIG_HOME/vim/bundle/vundle
+set undodir=$XDG_CACHE_HOME/vim
 
 " Store temporary files in a single location
 if has("win32")
@@ -40,6 +41,7 @@ set noexpandtab
 set smarttab                    " use tabs at start of line, spaces elsewhere
 set backspace=indent,eol,start  " allow backspace over EOL and SOL
 "retab                           " Fix tabbing for current file
+set undofile                    " persistent undo
 
 set background=dark             " better contrast on dark backgrounds
 colorscheme peachpuff
