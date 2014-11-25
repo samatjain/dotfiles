@@ -44,7 +44,8 @@ set backspace=indent,eol,start  " allow backspace over EOL and SOL
 set undofile                    " persistent undo
 
 set background=dark             " better contrast on dark backgrounds
-colorscheme peachpuff
+"colorscheme peachpuff
+colorscheme literal_tango
 
 " disable mouse in Vim 7
 set mouse=
