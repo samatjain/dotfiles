@@ -29,7 +29,8 @@ set guifont=Oxygen\ Mono\ 13
 "set guifont=Lucida\ Console\ Thin\\,\ 12
 "colorscheme desert
 "colorscheme literal_tango
-colorscheme Tomorrow-Night-Bright
+"colorscheme Tomorrow-Night-Bright
+colorscheme desert256
 
 " Override colorscheme things
 "highlight Normal guibg=black
