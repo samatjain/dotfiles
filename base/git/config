@@ -1,6 +1,3 @@
-[user]
-	name = Samat K Jain
-	email = samat@samat.org
 #[core]
 #	excludesfile = ~/.config/git/ignore
 [color]
@@ -43,8 +40,7 @@
 	history-view-vpane-position = 519
 	main-window-view = HistoryView
 	file-view-vpane-position = 869
-[github]
-	user = samatjain
-	token = d852036ca6a274096056b7ed097318ee
 [push]
 	default = simple
+[include]
+	path = user
