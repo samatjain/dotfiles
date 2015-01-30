@@ -4,13 +4,14 @@
 let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 set viminfo+=n$XDG_CACHE_HOME/viminfo
 set runtimepath=$XDG_CONFIG_HOME/vim/,$XDG_CONFIG_HOME/vim/after/,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$XDG_CONFIG_HOME/vim/bundle/vundle
-set undodir=$XDG_CACHE_HOME/vim//
+set undodir=$XDG_CACHE_HOME/vim/undo//
 
 " Store temporary files in a single location
 if has("win32")
 	set directory=$TEMP
 else
-	set directory=$XDG_CACHE_HOME/vim//
+	set directory=$XDG_CACHE_HOME/vim/swap//
+	set backupdir=$XDG_CACHE_HOME/vim/backup//
 end
 
 set number                      " line numbering
@@ -29,7 +30,7 @@ set ignorecase                  " only be case-sensitive when the expression
 set smartcase                   "  contains a capital
 
 "set autowrite
-set nobackup
+"set nobackup
 
 set linebreak
 "set textwidth=80

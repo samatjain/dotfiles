@@ -1,7 +1,9 @@
 #!/bin/sh
 
+ln -sf $XDG_CONFIG_HOME/vim/vimrc ~/.vimrc
+
 # Remove old cache directory
 rm -rf ~/.vim/tmp
 
-# Create new cache directory
-mkdir -p ~/.cache/vim/
+# Create new cache directories
+mkdir -p ~/.cache/vim/backup ~/.cache/vim/swap ~/.cache/vim/undo
