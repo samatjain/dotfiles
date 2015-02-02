@@ -108,7 +108,10 @@ endif
 " Force write as root w/ w!! when saving as wrong user
 cmap w!! %!sudo tee > /dev/null %
 
-" execute pathogen#infect()
+runtime! autoload/pathogen.vim
+if exists("*pathogen#infect")
+    call pathogen#infect()
+endif
 
 function! NumberToggle()
 	if(&relativenumber == 1)
