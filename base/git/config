@@ -34,6 +34,10 @@
 	# Text diff for OpenDocument files; requires repository changes as well
 	#  from http://git.or.cz/gitwiki/GitTips#HowtousegittotrackOpenDocument.28OpenOffice.2CKoffice.29files.3F
 	textconv=odt2txt
+[commit]
+	gpgsign = false
+[gpg]
+	program = gpg2
 [giggle]
 	main-window-maximized = true
 	main-window-geometry = 803x738+160+162

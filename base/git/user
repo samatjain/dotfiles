@@ -1,5 +1,6 @@
 [user]
 	name = Samat K Jain
 	email = samat@samat.org
+	signingkey = 4A456FBA
 [github]
 	user = samatjain
