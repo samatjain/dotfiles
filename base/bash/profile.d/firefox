@@ -1,0 +1,3 @@
+# Faster Firefox Javascript performance for Nightly, Aurora, and Beta
+# See http://forums.mozillazine.org/viewtopic.php?f=23&t=1948595&p=13825877&hilit=environment#p13825877
+export JSGC_DISABLE_POISONING=1
