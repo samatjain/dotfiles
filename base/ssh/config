@@ -53,6 +53,8 @@ Host razzputin
 	LocalForward 2777 localhost:2777
 	LocalForward 2778 localhost:2778
 	LocalForward 2779 localhost:2779
+	LocalForward 2780 localhost:2780
+	LocalForward 2781 localhost:2781
 
 ##############################################################################
 # other
