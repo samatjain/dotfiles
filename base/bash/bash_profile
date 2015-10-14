@@ -18,7 +18,6 @@ export AUTOSSH_GATETIME=0
 export AUTOSSH_PORT=0
 
 # Colored grep
-export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;33'
 
 # Tell less not to beep and also display colours
