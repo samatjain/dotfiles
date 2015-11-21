@@ -143,7 +143,7 @@ Host *
 	Ciphers chacha20-poly1305@openssh.com,blowfish-cbc,aes128-cbc
 	#Ciphers arcfour,blowfish-cbc,aes128-cbc
 	#MACs umac-64@openssh.com,hmac-md5,hmac-sha1 # Insecure?
-	MACs hmac-sha2-256-etm@openssh.com,hmac-ripemd160,hmac-sha1
+	MACs hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-ripemd160,hmac-sha1
 	Compression yes
 	ControlMaster auto
 	ControlPersist yes
