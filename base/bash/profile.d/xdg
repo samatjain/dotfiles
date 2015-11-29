@@ -5,11 +5,6 @@ export PATH="$HOME/.local/bin:$PATH"
 # Set the systemd-style DBUS address
 # export DBUS_SESSION_BUS_ADDRESS=unix:path=$XDG_RUNTIME_DIR/bus
 
-# XDG directories
-export XDG_CONFIG_HOME="$HOME/.config"
-export  XDG_CACHE_HOME="$HOME/.cache"
-export   XDG_DATA_HOME="$HOME/.local/share"
-
 # Set path to inputrc configuration
 export INPUTRC="$XDG_CONFIG_HOME/bash/inputrc"
 

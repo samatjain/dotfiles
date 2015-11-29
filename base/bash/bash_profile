@@ -48,6 +48,11 @@ elif [ -f "$HOME/.keychain/$(hostname)-sh" ]; then
         source "$HOME/.keychain/$(hostname)-sh"
 fi
 
+# XDG directories
+export XDG_CONFIG_HOME="$HOME/.config"
+export  XDG_CACHE_HOME="$HOME/.cache"
+export   XDG_DATA_HOME="$HOME/.local/share"
+
 for file in ~/.config/{shell,bash}/profile.d/*; do
     [[ -e $file ]] && . "$file"
 done
