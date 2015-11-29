@@ -105,12 +105,13 @@ exe "set title t_ts=\<ESC>k t_fs=\<ESC>\\"
 let &titleold=substitute(getcwd(), $HOME, "~", '')
 endif
 
-" Force write as root w/ w!! when saving as wrong user
+" Force write as root w/ "w!!" when saving as wrong user
 cmap w!! %!sudo tee > /dev/null %
 
 " On Debian, must install pathogen (`sudo aptitude install vim-pathogen`)
 "  and then symlink into autoload directory
 "  `mkdir -p ~/.config/vim/autoload/ && ln -s /usr/share/vim/addons/autoload/pathogen.vim ~/.config/vim/autoload/`
+"  or run `vim-addons install pathogen`
 runtime! autoload/pathogen.vim
 if exists("*pathogen#infect")
     call pathogen#infect()
