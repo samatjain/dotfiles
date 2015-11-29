@@ -24,3 +24,12 @@ Files in this repository have been inspired by:
 
  * My own dotfiles, littered across many different types of machines
  * [Evan Purkhiser's dotfiles-personal](https://github.com/EvanPurkhiser/dots-personal/) (since he's the creator of dots)
+
+## Debian packages
+
+The configuration here will work best with some additional Debian/Ubuntu packages installed.
+
+    sudo aptitutde install \
+      python-pygments # Provides pygmentize for lessfilter \
+      vim-addon-manager # Debian/Vim addons manager \
+      vim-pathogen # Pathogen plugin manager for vim. Run `vim-addons install` pathogen after installation
