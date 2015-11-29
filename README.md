@@ -25,9 +25,11 @@ Files in this repository have been inspired by:
  * My own dotfiles, littered across many different types of machines
  * [Evan Purkhiser's dotfiles-personal](https://github.com/EvanPurkhiser/dots-personal/) (since he's the creator of dots)
 
-## Debian packages
+## System packages
 
-The configuration here will work best with some additional Debian/Ubuntu packages installed.
+The configuration in this repository will work best w/ additional system packages installed.
+
+### Debian and Ubuntu
 
     sudo aptitutde install \
       python-pygments # Provides pygmentize for lessfilter \
