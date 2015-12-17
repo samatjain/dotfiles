@@ -28,6 +28,9 @@
 	assumed = "!git ls-files -v | grep ^h | cut -c 3-"
 	unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
 
+	meld = difftool -t meld
+	kdiff3 = difftool -t kdiff3
+
 	# All commits related to a file
 	filelog = log -u
 [diff "odf"]
@@ -46,5 +49,7 @@
 	file-view-vpane-position = 869
 [push]
 	default = simple
+[difftool]
+	prompt = false
 [include]
 	path = user
