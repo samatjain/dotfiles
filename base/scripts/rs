@@ -1,0 +1,25 @@
+#!/bin/sh
+
+export RSYNC_RSH="ssh"
+
+# try rsync for $MAX_RESTARTS times
+I=0
+MAX_RESTARTS=5
+LAST_EXIT_CODE=1
+while [ $I -le $MAX_RESTARTS ]; do
+	I=$(( $I + 1 ))
+	# For FAT32 partitions, --modify-window is required. May have side effects
+	#  on other partition types
+	rsync -rtvSP --modify-window=1 "$@"
+	LAST_EXIT_CODE=$?
+	if [ $LAST_EXIT_CODE -eq 0 ]; then
+		break
+	fi
+done
+
+# check if successful
+if [ $LAST_EXIT_CODE -ne 0 ]; then
+	echo rsync failed for $I times. giving up.
+else
+	exit 0
+fi

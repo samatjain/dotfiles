@@ -1,6 +1,11 @@
 [[ "$-" == *i* ]] || return
 
-PATH=$HOME/sys/bin:/sbin:/usr/sbin:/usr/local/sbin:$PATH
+# XDG directories
+export XDG_CONFIG_HOME="$HOME/.config"
+export  XDG_CACHE_HOME="$HOME/.cache"
+export   XDG_DATA_HOME="$HOME/.local/share"
+
+PATH=$XDG_CONFIG_HOME/scripts:$HOME/sys/bin:/sbin:/usr/sbin:/usr/local/sbin:$PATH
 
 # Setup colorisation for ls
 eval $(dircolors -b)
@@ -47,11 +52,6 @@ elif [ -f "$HOME/.keychain/$(hostname)-sh" ]; then
         keychain --nocolor --quiet "$HOME/.ssh/id_ed25519" "$HOME/.ssh/id_ecdsa" "$HOME/.ssh/id_rsa"
         source "$HOME/.keychain/$(hostname)-sh"
 fi
-
-# XDG directories
-export XDG_CONFIG_HOME="$HOME/.config"
-export  XDG_CACHE_HOME="$HOME/.cache"
-export   XDG_DATA_HOME="$HOME/.local/share"
 
 for file in ~/.config/{shell,bash}/profile.d/*; do
     [[ -e $file ]] && . "$file"

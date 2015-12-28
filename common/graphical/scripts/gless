@@ -1,0 +1,9 @@
+#!/bin/bash
+# Shell script to start Vim with less.vim.
+# Read stdin if no arguments were given.
+
+if test $# = 0; then
+  gvim -X --cmd 'let no_plugin_maps = 1' -c 'set sw=8 ts=8' -c 'runtime! macros/less.vim' -
+else
+  gvim -X --cmd 'let no_plugin_maps = 1' -c 'set sw=8 ts=8' -c 'runtime! macros/less.vim' "$@"
+fi

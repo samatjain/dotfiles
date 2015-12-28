@@ -1,0 +1,128 @@
+#!/usr/bin/perl -w
+# aptitude-build-dep
+# Copyright 2005 by Peter Samuelson
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License, version 2,
+# as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St., Fifth Floor, Boston, MA
+# 02110-1301, USA.
+
+
+# This is like 'apt-get build-dep foo', except that it takes advantage
+# of aptitude's auto-install tracking.  It installs an equivs dummy
+# package 'build-dep-foo' with aptitude, so that later if you remove
+# build-dep-foo, your build dependencies will go away as well.
+#
+# Requires 'equivs' and 'aptitude'.
+
+use File::Temp;
+
+# Feel free to customise this bit
+my $section = 'libdevel';
+my $priority = 'optional';
+my $pkgfmt = 'build-dep-%s';
+my $descfmt = 'Build-Depends for %s';
+my $maintainer = 'Local System <root@localhost>';
+my @aptitude = qw(aptitude);
+my $dpkg_arch = qx(dpkg --print-architecture);
+chomp $dpkg_arch;
+
+# Resolve arch-specific build deps/conflicts like [hurd-i386].
+# These are allowed in Build-* but not in Depends/Conflicts headers.
+sub resolve_arch_spec {
+	my @depgrps = split(m/\s*,\s*/, $_[0]);
+	my @newdepgrps = ();
+	for my $depgrp (@depgrps) {
+		my @deps = split(m/\s*\|\s*/, $depgrp);
+		my @newdeps = ();
+		for my $dep (@deps) {
+			if ($dep =~ s/\s*\[(.*?)\]//) {
+				my @archs = split(m/\s+/, $1);
+				if (grep { $_ eq '!'.$dpkg_arch } @archs or
+				    ($archs[0] !~ m/^!/ and
+				     ! grep { $_ eq $dpkg_arch } @archs)) {
+					$dep = undef;
+				}
+			}
+			if ($dep) {
+				push @newdeps, $dep;
+			}
+		}
+		if (@newdeps) {
+			push @newdepgrps, join(' | ', @newdeps);
+		}
+	}
+	return join(', ', @newdepgrps);
+}
+
+my @packages = ();
+for my $pkg (@ARGV) {
+	my %field = (package => sprintf($pkgfmt, $pkg),
+		     maintainer => $maintainer,
+		     description => sprintf($descfmt, $pkg));
+	for my $line (qx(apt-cache showsrc $pkg)) {
+		chomp $line;
+		my ($k,$v) = ($line, $line);
+		$k =~ s/\s*:.*//; $v =~ s/^[^:]*:\s*//;
+		$k = lc $k;
+		for ($k) {
+			if (/^package$/) {
+				my $p = sprintf $pkgfmt, $v;
+				$field{package} = $p;
+				$field{description} = sprintf $descfmt, $v;
+			}
+			elsif (/^version$/) {
+				$field{version} = $v;
+			}
+			elsif (/^build-depends(?:-indep)?$/) {
+				$field{depends} .= ', ' if $field{depends};
+				$field{depends} .= $v;
+			}
+			elsif (/^build-conflicts(?:-indep)?$/) {
+				$field{conflicts} .= ', ' if $field{conflicts};
+				$field{conflicts} = $v;
+			}
+		}
+	}
+	$field{depends} = resolve_arch_spec($field{depends})
+	  if $field{depends};
+	$field{conflicts} = resolve_arch_spec($field{conflicts})
+	  if $field{conflicts};
+
+	my $fh = new File::Temp;
+	my $ctrlfile = $fh->filename;
+	print $fh "Section: $section\n" .
+		  "Priority: $priority\n\n";
+	for (qw(Package Version Maintainer Depends Conflicts Description)) {
+		if (defined $field{lc $_}) {
+			printf $fh "%s: %s\n", $_, $field{lc $_};
+		}
+	}
+	close $fh;
+	system 'equivs-build', $ctrlfile or
+		warn "equivs-build failed for $field{package}\n";
+	unlink $ctrlfile;
+	push @packages, $field{package};
+}
+my @files = ();
+for my $p (@packages) {
+	my $f = glob "${p}_*.deb";
+	if ($f) {
+		push @files, $f
+	}
+	else {
+		warn "cannot find *.deb for package '$p'\n";
+	}
+}
+system 'dpkg', '--unpack', @files;
+system @aptitude, '-f', 'install';
+unlink @files;

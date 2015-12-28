@@ -1,0 +1,8 @@
+#!/bin/sh
+# from doctau: -server -Xmx1024m -Xms1024m -XX:+UseConcMarkSweepGC -XX:+UseBiasedLocking -XX:+UseTLAB
+ln -s ~/.cache/josm/ /tmp/JMapViewerTiles_xjjk
+export GTK2_RC_FILES="/etc/gtk-2.0/gtkrc:/home/xjjk/sys/JOSM/gtkrc-josm"
+#export GTK2_RC_FILES="/home/xjjk/sys/JOSM/gtkrc-josm"
+export JAVA_OPTS="-Xmx2G"
+export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64/jre"
+/usr/bin/josm

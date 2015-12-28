@@ -1,0 +1,12 @@
+#!/bin/bash
+unset PAGER
+
+args="`echo $* | sed 's:\ :\\\ :g'`"
+
+if [ $# -eq 0 ]; then
+	/usr/bin/man
+elif whatis $* ; then
+	/usr/bin/man $* | col -bp | iconv -c | vless -c "set ft=man nomod nolist so=999 ts=8 wrap titlestring=man:$args" -
+fi
+
+
