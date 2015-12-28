@@ -27,7 +27,7 @@ DOTS_CLONE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Make sure target directories exist
 mkdir -p "$XDG_CONFIG_HOME" "$XDG_CACHE_HOME" "$XDG_DATA_HOME"
-mkdir -p "$HOME/sys/bin" "$HOME/src/git.other"
+mkdir -p "$HOME/.local/bin" "$HOME/src/git.other"
 
 # dots expects stuff in ~/.local/etc/… create symlink so stuff stays working
 # will be replaced by config option in future version of dots
@@ -38,8 +38,8 @@ ln -s "$HOME/src/git.other/dotfiles" "$HOME/.local/etc"
 # Initalization script which will do a few things:
 #
 #  1. Move the cloned dotfiles directory into $HOME/src/git.other/dotfiles
-#  2. Link the dots executable into $HOME/sys/bin
-#  3. Add the $HOME/sys/bin directory to the $PATH if it isn't already
+#  2. Link the dots executable into $HOME/.local/bin
+#  3. Add the $HOME/.local/bin directory to the $PATH if it isn't already
 #  4. Source the dots/contrib/bash_completion script
 #
 # The `DOTS_CLONE_DIR` environment should be set to the
@@ -68,7 +68,7 @@ __dots_init()
 	local install_dir="$HOME/src/git.other/dotfiles"
 
 	# The directory where the user keeps his executables
-	local bin_dir="$HOME/sys/bin"
+	local bin_dir="$HOME/.local/bin"
 
 	# 1. Move everything into the install directory if we need to
 	if [[ "$install_dir" != "$cloned_dir" ]]
@@ -111,7 +111,7 @@ __dots_init()
 	if [[ ":$PATH:" != *":$bin_dir:"* ]]
 	then
 		echo -e "$arrow_good Temporarily adding $bin_dir to your PATH"
-		PATH="$HOME/sys/bin:$PATH"
+		PATH="$HOME/.local/bin:$PATH"
 	fi
 
 	# 4. Source in the dots completion
