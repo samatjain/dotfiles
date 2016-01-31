@@ -19,10 +19,10 @@ Host machina
 	User xjjk
 	ForwardAgent yes
 Host sobk
-	Hostname anubis.hotnudiegirls.com
+	Hostname sobk.local
 	User xjjk
 	ForwardAgent yes
-	ProxyCommand ssh -W %h:%p sobk.local
+	ProxyCommand ssh -W %h:%p anubis.hotnudiegirls.com
 Host sun-ra
 	Hostname sun-ra.hotnudiegirls.com
 	User xjjk
