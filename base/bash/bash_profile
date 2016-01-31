@@ -14,10 +14,6 @@ eval $(dircolors -b)
 export HISTIGNORE="ls:clear"
 export HISTCONTROL="ignoredups"
 
-# This, along with shopt -s histappend, stores history from all shells into
-#  a single file
-export PROMPT_COMMAND="history -a"
-
 # Turn off autossh's built-in heuristics
 export AUTOSSH_GATETIME=0
 export AUTOSSH_PORT=0

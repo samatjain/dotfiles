@@ -67,18 +67,6 @@ function ssh-reagent() {
 
 ################################################################################
 
-# set default prompt
-if [ $TERM = "linux" ]; then
-	PS1="\[\033[1;31m\]\u\[\033[1;37m\]@\[\033[1;32m\]\h\[\033[1;37m\]:\[\033[0;37m\]\w\n\[\033[0;1;30m\]\t\[\033[1;37m\] \\$\[\033[0m\] "
-else
-	PS1="\[\e]2;\u@\h:\w\a\\]\[\033[1;31m\]\u\[\033[1;37m\]@\[\033[1;32m\]\h\[\033[1;37m\]:\[\033[0;37m\]\w\n\[\033[0;1;30m\]\t\[\033[1;37m\] \\$\[\033[0m\] "
-	# Add colored x or checkmark for last response code
-	PS1="\[\e]2;\u@\h:\w\a\\]\[\033[1;31m\]\u\[\033[1;37m\]@\[\033[1;32m\]\h\[\033[1;37m\]:\[\033[0;37m\]\w\n\[\033[0;1;30m\]\t \$(if [[ \$? == 0 ]]; then echo \"\[\033[01;32m\]\342\234\223\"; else echo \"\[\033[01;31m\]\342\234\227\"; fi) \[\033[1;37m\]\\$\[\033[0m\] "
-fi
-
-################################################################################
-
-function simple-prompt() { PS1='[\t \u@\h \W]$ '; }
 function cl() { cd $1; ls; }
 function mdcd() { mkdir $1; cd $1; }
 function date-stamp() { date +%Y%m%d; }
@@ -190,12 +178,6 @@ function xpwd() {
 function xcd() {
 	cd $(xclip -o)
 }
-
-# root user stuff
-if [ "`id -u`" = "0" ]; then
-	# Set red-colored prompt
-	PS1="\[\033[1;31m\]\u@\h:\[\033[0;31m\]\w\n\[\033[0;1;30m\]\t \[\033[1;31m\]\\$\[\033[0m\] "
-fi
 
 # Source local configurations
 for file in "$HOME/sys/config/"*.sh; do
