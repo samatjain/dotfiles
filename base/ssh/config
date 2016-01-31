@@ -56,6 +56,9 @@ Host razzputin
 	LocalForward 2780 localhost:2780
 	LocalForward 2781 localhost:2781
 
+Host openwrt.local
+	User root
+
 ##############################################################################
 # other
 ##############################################################################
