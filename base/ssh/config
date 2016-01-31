@@ -159,3 +159,4 @@ Host *
 	# Lookup IPv4 hostnames only
 	AddressFamily inet
 	UserKnownHostsFile ~/.cache/ssh/known_hosts
+	SendEnv LANG LC_* TZ
