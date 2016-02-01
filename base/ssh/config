@@ -88,7 +88,8 @@ Host cave
 # Innobright
 ##############################################################################
 
-host github.com-innobright
+Host github.com-innobright
+	Hostname github.com
 	IdentityFile ~/.ssh/id_innobright
 
 ##############################################################################
