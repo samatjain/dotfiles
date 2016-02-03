@@ -92,6 +92,10 @@ Host github.com-innobright
 	Hostname github.com
 	IdentityFile ~/.ssh/id_innobright
 
+Host megatron
+	User sjain
+	Hostname 172.16.10.113
+
 ##############################################################################
 # academic
 ##############################################################################
