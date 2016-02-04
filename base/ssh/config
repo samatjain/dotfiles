@@ -96,6 +96,11 @@ Host megatron
 	User sjain
 	Hostname 172.16.10.113
 
+Host ipage
+	User samatjain
+	Hostname ftp.innobright.com
+	Port 2222
+
 ##############################################################################
 # academic
 ##############################################################################
