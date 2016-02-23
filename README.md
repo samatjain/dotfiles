@@ -31,7 +31,7 @@ The configuration in this repository will work best w/ additional system package
 
 ### Debian and Ubuntu
 
-    sudo aptitutde install \
+    sudo aptitude install \
       python-pygments # Provides pygmentize for lessfilter \
       vim-addon-manager # Debian/Vim addons manager \
       vim-pathogen # Pathogen plugin manager for vim. Run `vim-addons install` pathogen after installation
