@@ -101,6 +101,10 @@ Host ipage
 	Hostname ftp.innobright.com
 	Port 2222
 
+Host zika
+	User xjjk
+	Hostname zika.innobright.com
+
 ##############################################################################
 # academic
 ##############################################################################
