@@ -174,6 +174,6 @@ Host *
 	ControlPath ~/.cache/ssh/control-sockets/remote-mux-%r@%h:%p
 	HashKnownHosts no
 	# Lookup IPv4 hostnames only
-	AddressFamily inet
+	# AddressFamily inet
 	UserKnownHostsFile ~/.cache/ssh/known_hosts
 	SendEnv LANG LC_* TZ
