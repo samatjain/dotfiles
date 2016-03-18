@@ -94,7 +94,8 @@ Host github.com-innobright
 
 Host megatron
 	User sjain
-	Hostname 172.16.10.113
+	#Hostname 172.16.10.113
+	Hostname megatron.int.innobright.com
 
 Host ipage
 	User samatjain
