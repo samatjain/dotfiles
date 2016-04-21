@@ -27,6 +27,7 @@
 	unassume = update-index --no-assume-unchanged
 	assumed = "!git ls-files -v | grep ^h | cut -c 3-"
 	unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
+	network = log --graph --oneline
 
 	meld = difftool -t meld
 	kdiff3 = difftool -t kdiff3
@@ -53,3 +54,5 @@
 	prompt = false
 [include]
 	path = user
+[merge]
+	conflictstyle = diff3
