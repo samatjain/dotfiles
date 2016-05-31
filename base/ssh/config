@@ -58,6 +58,8 @@ Host razzputin
 
 Host openwrt.local
 	User root
+Host *openwrt.local
+	User root
 
 ##############################################################################
 # other
