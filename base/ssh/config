@@ -55,6 +55,14 @@ Host razzputin
 	LocalForward 2779 localhost:2779
 	LocalForward 2780 localhost:2780
 	LocalForward 2781 localhost:2781
+Host apis
+	Hostname 192.168.42.31
+	User xjjk
+	ProxyCommand ssh -W %h:%p sjain@kup.innobright.com
+Host tinny
+	Hostname 192.168.42.52
+	User xjjk
+	ProxyCommand ssh -W %h:%p sjain@kup.innobright.com
 
 Host openwrt.local
 	User root
@@ -90,19 +98,19 @@ Host cave
 # Innobright
 ##############################################################################
 
-Host github.com-innobright
-	Hostname github.com
-	IdentityFile ~/.ssh/id_innobright
-
 Host megatron
 	User sjain
 	#Hostname 172.16.10.113
 	Hostname megatron.int.innobright.com
-
 Host ipage
 	User samatjain
 	Hostname ftp.innobright.com
 	Port 2222
+Host cyclonus
+	Hostname 192.168.42.19
+	User sjain
+	ProxyCommand ssh -W %h:%p sjain@kup.innobright.com
+
 
 Host zika
 	User xjjk
