@@ -8,12 +8,16 @@ Host *.local
 	ForwardX11Trusted yes
 	# Allow IPv6 when on LANs
 	AddressFamily any
+	# Disable compression for LAN
+	Compression no
 Host *.home
 	ForwardAgent yes
 	ForwardX11 yes
 	ForwardX11Trusted yes
 	# Allow IPv6 when on LANs
 	AddressFamily any
+	# Disable compression for LAN
+	Compression no
 Host machina
 	Hostname machina.hotnudiegirls.com
 	User xjjk
