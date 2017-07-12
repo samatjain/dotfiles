@@ -34,6 +34,11 @@
 
 	# All commits related to a file
 	filelog = log -u
+[apply]
+	whitespace = strip
+[diff]
+	algorithm = patience
+	indentHeuristic = on
 [diff "odf"]
 	# Text diff for OpenDocument files; requires repository changes as well
 	#  from http://git.or.cz/gitwiki/GitTips#HowtousegittotrackOpenDocument.28OpenOffice.2CKoffice.29files.3F
