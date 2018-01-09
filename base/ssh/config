@@ -179,7 +179,7 @@ Host *
 	ServerAliveInterval 20
 	ServerAliveCountMax 2
 	# Speed up encryption
-	Ciphers chacha20-poly1305@openssh.com,cbc,aes128-cbc,aes128-ctr
+	Ciphers chacha20-poly1305@openssh.com,aes128-cbc,aes128-ctr
 	#Ciphers arcfour,blowfish-cbc,aes128-cbc
 	#MACs umac-64@openssh.com,hmac-md5,hmac-sha1 # Insecure?
 	MACs hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha1
