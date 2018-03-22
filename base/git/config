@@ -1,5 +1,6 @@
-#[core]
+[core]
 #	excludesfile = ~/.config/git/ignore
+	pager = less -XF
 [color]
 	branch = auto
 	diff = auto
