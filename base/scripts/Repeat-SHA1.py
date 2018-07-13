@@ -13,27 +13,29 @@ import click
 
 def foobar(filename, digest):
     for i in range(3):
-        with open(filename, "rb") as f:
-            h = hashlib.new('sha1')
-            buf = True
-            while buf:
-                try:
+        try:
+            with open(filename, "rb") as f:
+                h = hashlib.new('sha1')
+                buf = True
+                while buf:
                     buf = f.read(DEFAULT_BUFFER_SIZE)
-                except KeyboardInterrupt:
-                    print()
-                    sys.exit(130)
-                h.update(buf)
-            try:
+                    h.update(buf)
                 if digest == h.hexdigest():
+                    # checksum matches, everything is good!
                     return True
                 else:
+                    # checksum didn't match, try again at next loop iteration
                     pass
 
-            except IOError as e:
-                if e.errno != 32:
-                    raise
+        except (IOError, OSError) as e:
+            if e.errno != 32: # Ignore EPIPE (broken pipe)
+                print('ERROR:', filename)
+                return False
+        except KeyboardInterrupt:
+            print()
+            sys.exit(130)
 
-    print(filename,': FAILED')
+    print('FAILED:', filename)
     return False
 
 
