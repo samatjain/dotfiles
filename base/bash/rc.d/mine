@@ -160,6 +160,12 @@ function fpr() {
 	echo $(hostname):$(fp $@)
 }
 
+# Print the full path to a file, including hostname.local for use on LANs
+function fpl() {
+#	echo `hostname`:`pwd`/$1
+	echo $(hostname).local:$(fp $@)
+}
+
 function highlight() {
 	e="$1"; shift; grep --col=always -Eih "$e|$" "$@";
 }
