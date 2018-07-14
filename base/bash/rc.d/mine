@@ -71,7 +71,10 @@ function cl() { cd $1; ls; }
 function mdcd() { mkdir $1; cd $1; }
 function date-stamp() { date +%Y%m%d; }
 function time-stamp() { date +%Y%m%d-%H%M%S; }
-function readable-time-stamp() { date '+%Y%m%d-%H%M%S-%a-%b-%d-%Y' | tr '[A-Z]' '[a-z]'; }
+function time-stamp-w3cdtf() { date --utc --iso-8601=seconds | sed 's/+00.00/Z/'; }
+function time-stamp-w3cdtf-local() { date --iso-8601=seconds | sed 's/+00.00/Z/'; }
+function time-stamp-readable() { date '+%Y%m%d-%H%M%S-%a-%b-%d-%Y'; }
+function time-stamp-readable-lowercase() { date '+%Y%m%d-%H%M%S-%a-%b-%d-%Y' | tr '[A-Z]' '[a-z]'; }
 
 # e.g prepend PATH /usr/local/bin
 function prepend() { [ -d "$2" ] && eval $1=\"$2\$\{$1:+':'\$$1\}\" && export $1 ; }
