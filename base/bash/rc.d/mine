@@ -34,6 +34,8 @@ alias xnmap="nmap -PN -T4"
 alias sudo="sudo "
 alias syslog="tail /var/log/syslog"
 alias pretty-json="python -m json.tool"
+alias color-json="pygmentize -l json"
+alias mtr-test="mtr -s 1000 -r -c 1000"
 
 # Generate random password of 16 characters & spell with military alphabet
 alias random-password="apg -m 16 -l -n 1"
@@ -110,8 +112,8 @@ function ff() {
 # Find a file with pattern $1 in name and Execute $2 on it
 # Usage: fe <pattern> <command>
 function fe() {
-	echo find . -type f -iname '*'$1'*' -exec "${2:-file}" {} \; 
-	find . -type f -iname '*'$1'*' -exec "${2:-file}" {} \; 
+	echo find . -type f -iname '*'$1'*' -exec "${2:-file}" {} \;
+	find . -type f -iname '*'$1'*' -exec "${2:-file}" {} \;
 }
 
 function my-ps() {
