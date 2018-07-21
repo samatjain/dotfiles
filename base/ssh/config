@@ -47,6 +47,10 @@ Host titus
 	Hostname titus.hotnudiegirls.com
 	User xjjk
 	ForwardAgent yes
+Host nerva
+	Hostname nerva.hotnudiegirls.com
+	User xjjk
+	ForwardAgent yes
 Host anubis
 	Hostname anubis.hotnudiegirls.com
 	User xjjk
