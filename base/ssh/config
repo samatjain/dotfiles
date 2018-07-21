@@ -22,27 +22,27 @@ Host machina
 	Hostname machina.hotnudiegirls.com
 	User xjjk
 	ForwardAgent yes
-Host sobk
-	Hostname sobk.local
-	User xjjk
-	ForwardAgent yes
-	ProxyCommand ssh -W %h:%p anubis.hotnudiegirls.com
-Host sun-ra
-	Hostname sun-ra.hotnudiegirls.com
-	User xjjk
-	ForwardAgent yes
-Host caligula
-	Hostname caligula.hotnudiegirls.com
-	User xjjk
-	ForwardAgent yes
+#Host sobk
+#	Hostname sobk.local
+#	User xjjk
+#	ForwardAgent yes
+#	ProxyCommand ssh -W %h:%p anubis.hotnudiegirls.com
+#Host sun-ra
+#	Hostname sun-ra.hotnudiegirls.com
+#	User xjjk
+#	ForwardAgent yes
+#Host caligula
+#	Hostname caligula.hotnudiegirls.com
+#	User xjjk
+#	ForwardAgent yes
 Host claudius
 	Hostname claudius.hotnudiegirls.com
 	User xjjk
 	ForwardAgent yes
-Host nero
-	Hostname nero.hotnudiegirls.com
-	User xjjk
-	ForwardAgent yes
+#Host nero
+#	Hostname nero.hotnudiegirls.com
+#	User xjjk
+#	ForwardAgent yes
 Host titus
 	Hostname titus.hotnudiegirls.com
 	User xjjk
@@ -58,15 +58,15 @@ Host anubis
 Host ruidoso
 	Hostname ruidoso.hotnudiegirls.com
 	User xjjk
-Host razzputin
-	Hostname razzputin.hotnudiegirls.com
-	User xjjk
-	ForwardAgent yes
-	LocalForward 2777 localhost:2777
-	LocalForward 2778 localhost:2778
-	LocalForward 2779 localhost:2779
-	LocalForward 2780 localhost:2780
-	LocalForward 2781 localhost:2781
+#Host razzputin
+#	Hostname razzputin.hotnudiegirls.com
+#	User xjjk
+#	ForwardAgent yes
+#	LocalForward 2777 localhost:2777
+#	LocalForward 2778 localhost:2778
+#	LocalForward 2779 localhost:2779
+#	LocalForward 2780 localhost:2780
+#	LocalForward 2781 localhost:2781
 Host apis
 	Hostname 192.168.42.31
 	User xjjk
