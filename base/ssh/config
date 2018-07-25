@@ -71,7 +71,7 @@ Host apis
 	Hostname 192.168.42.31
 	User xjjk
 	ProxyCommand ssh -W %h:%p sjain@kup.innobright.com
-Host tinny
+Host tiny
 	Hostname 192.168.42.52
 	User xjjk
 	ProxyCommand ssh -W %h:%p sjain@kup.innobright.com
