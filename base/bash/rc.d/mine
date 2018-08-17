@@ -192,6 +192,17 @@ function xcd() {
 	cd $(xclip -o)
 }
 
+# Set task's affinity such that it runs on a single CPU/core
+# See: https://twitter.com/mjg59/status/895023490687946752
+# TODO: Figure out a better name for this
+# TODO: Figure out stuff for Threadripper, etc for running on multi-core die
+function single-cpu-affinity() {
+	# Randomly select an available CPU
+	CPU_NO=$(echo "$RANDOM%$(nproc)" | bc)
+	# Run a new process only on that CPU
+	taskset -c ${CPU_NO} "$@"
+}
+
 # Source local configurations
 for file in "$HOME/sys/config/"*.sh; do
 	if [ -x "$file" ]; then
