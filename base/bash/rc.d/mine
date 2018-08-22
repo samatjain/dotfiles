@@ -38,6 +38,8 @@ alias color-json="pygmentize -l json"
 alias mtr-test="mtr -s 1000 -r -c 1000"
 # Run a process at the lowest I/O priority
 alias idle-io="ionice -c 3"
+# current directory usage. Include files, human-readable sizes.
+alias cdu="du --one-file-system --all --human-readable --max-depth=1 | sort -h"
 
 # Generate random password of 16 characters & spell with military alphabet
 alias random-password="apg -m 16 -l -n 1"
