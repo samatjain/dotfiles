@@ -2,6 +2,7 @@
 alias irssi="irssi --home=$XDG_CONFIG_HOME/irssi"
 alias synergys="synergys -c $XDG_CONFIG_HOME/synergy/synergy.conf"
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
+alias mosh="mosh --family=all"
 
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
