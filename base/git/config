@@ -29,6 +29,8 @@
 	assumed = "!git ls-files -v | grep ^h | cut -c 3-"
 	unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
 	network = log --graph --oneline
+	# Current branch name
+	branch-name = "symbolic-ref --short HEAD"
 
 	meld = difftool -t meld
 	kdiff3 = difftool -t kdiff3
