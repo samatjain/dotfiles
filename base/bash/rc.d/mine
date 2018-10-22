@@ -36,6 +36,8 @@ alias syslog="tail /var/log/syslog"
 alias pretty-json="python -m json.tool"
 alias color-json="pygmentize -l json"
 alias mtr-test="mtr -s 1000 -r -c 1000"
+# Run a process at lowest CPU scheduling priority
+alias idle-cpu="nice -n 19 chrt --idle 0"
 # Run a process at the lowest I/O priority
 alias idle-io="ionice -c 3"
 # current directory usage. Include files, human-readable sizes.
