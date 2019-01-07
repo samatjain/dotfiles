@@ -51,6 +51,7 @@
 [diff]
 	algorithm = patience
 	indentHeuristic = on
+	colorMoved = default
 [diff "odf"]
 	# Text diff for OpenDocument files; requires repository changes as well
 	#  from http://git.or.cz/gitwiki/GitTips#HowtousegittotrackOpenDocument.28OpenOffice.2CKoffice.29files.3F
