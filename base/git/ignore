@@ -1,5 +1,7 @@
-.vagrant
-*.un~
-tmp/
-node_modules/
 bower_components/
+node_modules/
+tmp/
+*.un~
+.vagrant
+venv
+.venv
