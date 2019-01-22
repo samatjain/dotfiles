@@ -7,3 +7,6 @@ alias mosh="mosh --family=all"
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
+
+alias py2="python2"
+alias py3="python3"
