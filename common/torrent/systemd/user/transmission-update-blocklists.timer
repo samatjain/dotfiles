@@ -1,0 +1,10 @@
+[Unit]
+Description=Update tranmission's IP blocklists weekly
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+RandomizedDelaySec=10h
+
+[Install]
+WantedBy=timers.target

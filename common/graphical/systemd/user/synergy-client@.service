@@ -1,0 +1,11 @@
+# Use `systemctl --user start synergy-client@example.com` to start, and
+# `systemctl --user enable synergy-client@example.com` to start at boot/login
+[Unit]
+Description=Synergy Client to %i
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/synergyc --no-daemon --enable-crypto --enable-drag-drop %i
+
+[Install]
+WantedBy=default.target
