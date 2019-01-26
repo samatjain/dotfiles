@@ -1,7 +1,7 @@
 # Use `systemctl --user start autossh-tunnel@example.com` to start, and
 # `systemctl --user enable autossh-tunnel@example.com` to start at boot/login
 [Unit]
-Description=SSH tunnel to %i
+Description=SSH tunnel to %i via autossh
 After=network-online.target
 
 [Service]
