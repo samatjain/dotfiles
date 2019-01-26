@@ -1,0 +1,10 @@
+[Unit]
+Description=Update transmission's IP blocklists
+Requisite=transmission-daemon.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/transmission-remote --blocklist-update
+
+[Install]
+WantedBy=transmission-update-blocklists.timer
