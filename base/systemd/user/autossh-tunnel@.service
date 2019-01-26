@@ -2,11 +2,18 @@
 # `systemctl --user enable autossh-tunnel@example.com` to start at boot/login
 [Unit]
 Description=SSH tunnel to %i
-After=network.target
+After=network-online.target
 
 [Service]
+# No monitoring
+Environment="AUTOSSH_PORT=0"
+# Disable gatetime behaviour
 Environment="AUTOSSH_GATETIME=0"
-ExecStart=/usr/bin/autossh -M 0 -q -N -o "ServerAliveInterval 15" -o "ServerAliveCountMax 3" %i
+# autossh is not great w/ ControlPersist
+ExecStart=/usr/bin/autossh -M 0 -q -N -o "ServerAliveInterval 15" -o "ServerAliveCountMax 3" -o "ExitOnForwardFailure=yes" -o "ControlPersist=no" %i
+# TODO: Once systemd can do some kind of exponential backup, set that up here
+RestartSec=5
+Restart=Always
 
 [Install]
 WantedBy=default.target
