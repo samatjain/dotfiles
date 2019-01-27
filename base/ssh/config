@@ -194,7 +194,7 @@ Host *
 	Compression yes
 	ControlMaster auto
 	ControlPersist yes
-	ControlPath ~/.cache/ssh/control-sockets/remote-mux-%r@%h:%p
+	ControlPath ~/.cache/ssh/cs/rmux-%r@%h:%p
 	HashKnownHosts no
 	# Lookup IPv4 hostnames only
 	# AddressFamily inet

@@ -3,4 +3,6 @@
 mkdir -p ~/.ssh/
 
 ln -sf $XDG_CONFIG_HOME/ssh/config ~/.ssh/
-mkdir -p $XDG_CACHE_HOME/ssh/control-sockets/
+# TODO: in the future, delete the old control-sockets directory
+#rm -rf $XDG_CACHE_HOME/ssh/control-sockets/
+mkdir -p $XDG_CACHE_HOME/ssh/cs/
