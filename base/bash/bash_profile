@@ -14,10 +14,6 @@ eval $(dircolors -b)
 export HISTIGNORE="ls:clear"
 export HISTCONTROL="ignoredups"
 
-# Turn off autossh's built-in heuristics
-export AUTOSSH_GATETIME=0
-export AUTOSSH_PORT=0
-
 # Colored grep
 export GREP_COLOR='1;33'
 
