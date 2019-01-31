@@ -68,7 +68,10 @@
 	file-view-vpane-position = 869
 [pull]
 	# Disable automatically creating merge commits on `git pull`. Forces you to
-	# either do a rebase or use `git pull --no-ff`.
+	# either do a rebase:
+	# • from another branch, with `git rebase other-branch`
+	# • against origin, with `git pull --rebase`
+	# or force creation of a merge commit with `git pull --no-ff`.
 	ff = only
 [push]
 	default = simple
