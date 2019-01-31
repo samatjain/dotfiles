@@ -66,6 +66,10 @@
 	history-view-vpane-position = 519
 	main-window-view = HistoryView
 	file-view-vpane-position = 869
+[pull]
+	# Disable automatically creating merge commits on `git pull`. Forces you to
+	# either do a rebase or use `git pull --no-ff`.
+	ff = only
 [push]
 	default = simple
 [difftool]
