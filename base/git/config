@@ -57,7 +57,7 @@
 	#  from http://git.or.cz/gitwiki/GitTips#HowtousegittotrackOpenDocument.28OpenOffice.2CKoffice.29files.3F
 	textconv=odt2txt
 [commit]
-	gpgsign = false
+	gpgsign = true
 [gpg]
 	program = gpg2
 [giggle]
@@ -68,10 +68,10 @@
 	file-view-vpane-position = 869
 [pull]
 	# Disable automatically creating merge commits on `git pull`. Forces you to
-	# either do a rebase:
-	# • from another branch, with `git rebase other-branch`
-	# • against origin, with `git pull --rebase`
-	# or force creation of a merge commit with `git pull --no-ff`.
+	# do one of:
+	# 1. rebase from another branch, with `git rebase other-branch`
+	# 2. rebase against (remote) origin, with `git pull --rebase`
+	# 3. force creation of a merge commit with `git pull --no-ff`.
 	ff = only
 [push]
 	default = simple
