@@ -3,3 +3,7 @@
 for file in ~/.config/{shell,bash}/rc.d/*; do
     [[ -e $file ]] && . "$file"
 done
+
+# direnv
+# This must be one of the last thing executed in bashrc
+hash direnv 2> /dev/null && eval "$(direnv hook bash)"
