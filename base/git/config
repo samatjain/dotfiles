@@ -57,7 +57,7 @@
 	#  from http://git.or.cz/gitwiki/GitTips#HowtousegittotrackOpenDocument.28OpenOffice.2CKoffice.29files.3F
 	textconv=odt2txt
 [commit]
-	gpgsign = true
+	gpgsign = false
 [gpg]
 	program = gpg2
 [giggle]
