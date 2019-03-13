@@ -106,6 +106,21 @@ Host cave
 	User sjain
 	Hostname cave.splunk.com
 
+Host wimpy
+	User samatj
+	Hostname wimpy.sv.splunk.com
+
+Host ronnie
+	User samatj
+	Hostname ronnie.sv.splunk.com
+
+Host mrt
+	User samatj
+	Hostname mrt.sv.splunk.com
+
+Host samatj-x1c.local
+	User samatj
+
 ##############################################################################
 # Innobright
 ##############################################################################
