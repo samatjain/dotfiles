@@ -24,7 +24,6 @@ alias sl=ls
 alias less="less -rfsm"
 alias cls="clear"
 alias vim="vim -X"
-alias ..="cd .."
 alias e="$EDITOR"
 alias kj="kill -15 %1"
 alias kkj="kill -9 %1"
