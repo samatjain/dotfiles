@@ -6,6 +6,7 @@ alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 # mosh should be able to use IPv6
 alias mosh="mosh --family=all"
 
+alias gr="fgrep --color=auto"
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
