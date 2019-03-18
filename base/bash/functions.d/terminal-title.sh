@@ -34,7 +34,7 @@ set-term-title() {
         echo -ne "\033]30;${_title}\007"
         # Based on: https://stackoverflow.com/posts/54142398/revisions
         if [ -n "$KONSOLE_DBUS_SESSION" ]; then  # Konsole
-            set-konsole-tab-title '%w'  # Use title we just set
+            set-konsole-tab-title "${_title}"  # Use title we just set
         fi
     fi
 }
