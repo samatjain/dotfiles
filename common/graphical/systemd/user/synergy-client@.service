@@ -5,6 +5,7 @@ Description=Synergy Client to %i
 After=network-online.target
 
 [Service]
+# For SSL fingerprint problems, try adding "--debug DEBUG2" below
 ExecStart=/usr/bin/synergyc --no-daemon --enable-crypto --enable-drag-drop %i
 
 [Install]
