@@ -1,3 +1,4 @@
 email = samat@samat.org
+prefix = ${HOME}/.local/lib/nodejs
 cache = ${HOME}/.cache/npm
 tmp = /tmp
