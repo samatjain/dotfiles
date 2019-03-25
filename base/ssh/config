@@ -95,31 +95,38 @@ Host heroku.com
 	IdentityFile ~/.ssh/id_rsa
 
 ##############################################################################
-# splunk
+# Splunk
 ##############################################################################
 
-Host tiny
-	User sjain
-	Hostname tiny.splunk.com
+#Host tiny
+#	User sjain
+#	Hostname tiny.splunk.com
 
-Host cave
-	User sjain
-	Hostname cave.splunk.com
+#Host cave
+#	User sjain
+#	Hostname cave.splunk.com
 
 Host wimpy
 	User samatj
 	Hostname wimpy.sv.splunk.com
+	ForwardAgent yes
 
 Host ronnie
 	User samatj
 	Hostname ronnie.sv.splunk.com
+	ForwardAgent yes
 
 Host mrt
 	User samatj
 	Hostname mrt.sv.splunk.com
+	ForwardAgent yes
 
 Host samatj-x1c.local
 	User samatj
+
+Host *.splunkcloud.com, *.splunkcloud.systems
+	User samatj
+	ForwardAgent yes
 
 ##############################################################################
 # Innobright
