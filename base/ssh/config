@@ -68,13 +68,16 @@ Host ruidoso
 #	LocalForward 2780 localhost:2780
 #	LocalForward 2781 localhost:2781
 Host apis
-	Hostname 192.168.42.31
+	Hostname tennessee.hotnudiegirls.com
 	User xjjk
-	ProxyCommand ssh -W %h:%p sjain@kup.innobright.com
 Host tiny
-	Hostname 192.168.42.52
+	Hostname tiny.local
 	User xjjk
-	ProxyCommand ssh -W %h:%p sjain@kup.innobright.com
+	ProxyCommand ssh -W %h:%p xjjk@tennessee.hotnudiegirls.com
+Host nu
+	Hostname nu.local
+	User xjjk
+	ProxyCommand ssh -W %h:%p xjjk@tennessee.hotnudiegirls.com
 
 Host openwrt.local
 	User root
