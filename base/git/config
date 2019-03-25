@@ -34,6 +34,7 @@
 
 	meld = difftool -t meld
 	kdiff3 = difftool -t kdiff3
+	diff-vscode = difftool -t diff-vscode
 
 	# All commits related to a file
 	filelog = log -u
@@ -77,6 +78,8 @@
 	default = simple
 [difftool]
 	prompt = false
+[difftool "diff-vscode"]
+	cmd = code --diff --new-window --wait $LOCAL $REMOTE
 [include]
 	path = user
 [merge]
