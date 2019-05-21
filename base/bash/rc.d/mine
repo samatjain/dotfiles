@@ -223,6 +223,3 @@ fi
 #if [ -z "$BASH_COMPLETION" ] && [ -f /etc/bash_completion ]; then
 #	source /etc/bash_completion
 #fi
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
