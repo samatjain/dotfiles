@@ -1,6 +1,7 @@
 .clangd
 bower_components/
 .directory
++**/.mypy_cache
 node_modules/
 tmp/
 *.un~
