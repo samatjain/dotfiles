@@ -1,7 +1,10 @@
+.clangd
 bower_components/
+.directory
 node_modules/
 tmp/
 *.un~
 .vagrant
 venv
 .venv
+.vscode
