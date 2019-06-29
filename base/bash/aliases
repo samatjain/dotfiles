@@ -22,3 +22,6 @@ alias ..="cd .."
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+
+# Better defaults
+alias dd="dd status=progress "
