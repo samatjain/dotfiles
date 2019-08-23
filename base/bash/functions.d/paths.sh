@@ -2,12 +2,12 @@
 
 # CWD's basename
 # zsh compatible
-cwdb() {
+bpwd() {
 	basename $(pwd)
 }
 
 # CWD's parent
 # zsh compatible
-cwdp() {
+ppwd() {
 	dirname $(pwd)
 }
