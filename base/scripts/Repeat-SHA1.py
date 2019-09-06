@@ -58,7 +58,6 @@ def PerformChecksum(filename, digest, delete=False, repeat=3, pbar=None, is_inte
         click.echo(': {filename}'.format(filename=filename), out_fp, nl=False)
         os.unlink(filename)
     else:
-        print('FAILED:', filename)
         click.echo(click.style('FAILED', fg='red'), out_fp, nl=False, color=is_interactive)
         click.echo(': {filename}'.format(filename=filename), out_fp, nl=False)
 
