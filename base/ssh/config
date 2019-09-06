@@ -73,11 +73,11 @@ Host apis
 Host tiny
 	Hostname tiny.local
 	User xjjk
-	ProxyCommand ssh -W %h:%p xjjk@tennessee.hotnudiegirls.com
+	ProxyJump apis
 Host nu
 	Hostname nu.local
 	User xjjk
-	ProxyCommand ssh -W %h:%p xjjk@tennessee.hotnudiegirls.com
+	ProxyJump apis
 
 Host openwrt.local
 	User root
