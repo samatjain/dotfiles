@@ -4,10 +4,11 @@ set editing-mode vi
 set keymap vi
 set mark-directories on
 set mark-symlinked-directories on
-set show-all-if-ambiguous on
 set visible-stats on
 set horizontal-scroll-mode Off
 set show-all-if-ambiguous on
+set completion-ignore-case on
+set completion-map-case on
 
 # Enable 8 bit input.
 #set meta-flag On
