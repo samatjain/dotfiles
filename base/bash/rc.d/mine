@@ -48,7 +48,7 @@ alias random-password="apg -m 16 -l -n 1"
 # Enable color for minicom
 alias minicom="minicom -c on"
 
-alias ssh-no-hostkey="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking no"
+alias ssh-no-hostkey="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 # Save link to ssh-agent
 #function _ssh_auth_save()
