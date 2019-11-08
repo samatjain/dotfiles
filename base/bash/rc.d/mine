@@ -9,7 +9,7 @@ shopt -s histappend
 unset MAILCHECK
 
 # Make less more friendly for non-text input files, see lesspipe(1)
-[ -x $(which lesspipe) ] && eval "$(lesspipe)"
+hash lesspipe 2> /dev/null && eval "$(lesspipe)"
 
 # Fix backspace problems
 if [ -t 0 ]; then
