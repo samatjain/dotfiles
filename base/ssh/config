@@ -124,6 +124,11 @@ Host mrt
 	Hostname mrt.sv.splunk.com
 	ForwardAgent yes
 
+Host chieftain
+	User samatj
+	Hostname chieftain.sv.splunk.com
+	ForwardAgent yes
+
 Host samatj-x1c.local
 	User samatj
 
@@ -148,6 +153,9 @@ Host cyclonus
 	User sjain
 	ProxyCommand ssh -W %h:%p sjain@kup.innobright.com
 
+Host zika
+	User sjain
+	Hostname zika.innobright.com
 
 Host zika
 	User xjjk
