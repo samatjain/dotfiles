@@ -38,3 +38,4 @@ set-term-title() {
         fi
     fi
 }
+alias stt=set-term-title
