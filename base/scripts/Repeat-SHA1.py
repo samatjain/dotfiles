@@ -70,7 +70,7 @@ def PerformChecksum(filename, digest, delete: bool = False, repeat=3, pbar=None,
 @click.option('--delete', help="Delete file if checksum fails. default=False", is_flag=True, default=False)
 @click.option('--batch', 'batch_mode', help="Batch mode hides progress bar and colors. default=False", is_flag=True, default=False)
 @click.option('-n', '--repeat', help="Number of times to repeat. default=3", default=3, type=click.IntRange(min=0))
-@click.option('-j', '--jobs', help="Number of jobs/processes. Should be function of I/O bandwidth, and not processor cores. default=4", default=4, type=click.IntRange(min=0))
+@click.option('-j', '--jobs', help="Number of jobs/processes. Should be function of I/O bandwidth, and not processor cores. 0 is autodetect, default=4", default=4, type=click.IntRange(min=0))
 @click.argument('digest_files', type=click.Path(readable=True), nargs=-1)
 def main(digest_files, delete, batch_mode, repeat, jobs):
     filenames_to_digest = {}
@@ -78,8 +78,10 @@ def main(digest_files, delete, batch_mode, repeat, jobs):
     # Interactive mode?
     try:
         is_interactive = sys.stdout.isatty()
+        color = is_interactive
     except:
         is_interactive = False
+        color = False
     if batch_mode:
         is_interactive = False
 
@@ -87,6 +89,10 @@ def main(digest_files, delete, batch_mode, repeat, jobs):
         import multiprocessing.dummy as multiprocessing
     else:
         import multiprocessing
+
+    if jobs == 0:
+        import multiprocessing as mp_real
+        jobs = mp_real.cpu_count()
 
     for current_digest_file in digest_files:
         current_digest_file = os.path.abspath(os.path.expanduser(current_digest_file))
@@ -98,7 +104,6 @@ def main(digest_files, delete, batch_mode, repeat, jobs):
 
     total_files = len(filenames_to_digest)
     pbar = None
-    istty = click._compat.isatty(sys.stdout)
     if is_interactive:
         click.echo('Checksumming {total_files} file(s) from {total_digests} digest(s).'.format(total_files=total_files, total_digests=len(digest_files)))
         pbar = tqdm(
@@ -108,7 +113,7 @@ def main(digest_files, delete, batch_mode, repeat, jobs):
             dynamic_ncols=True,
             position=0)
 
-    fnChecksum = functools.partial(PerformChecksum, delete=delete, repeat=repeat, pbar=pbar, is_interactive=is_interactive, color=istty)
+    fnChecksum = functools.partial(PerformChecksum, delete=delete, repeat=repeat, pbar=pbar, is_interactive=is_interactive, color=color)
 
     #with multiprocessing.dummy.Pool(jobs, initializer=tqdm.set_lock, initargs=(RLock(),)) as pool:
     with multiprocessing.Pool(jobs) as pool:
