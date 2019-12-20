@@ -14,11 +14,12 @@ from io import DEFAULT_BUFFER_SIZE
 from pprint import pprint  # NOQA
 
 import click
+import click._compat
 from colorama import Fore
 from tqdm import tqdm
 
 
-def PerformChecksum(filename, digest, delete=False, repeat=3, pbar=None, is_interactive=False) -> bool:
+def PerformChecksum(filename, digest, delete: bool = False, repeat=3, pbar=None, is_interactive: bool = False, color: bool = True) -> bool:
     # If we're not in batch (i.e. interactive) mode, then use colors and
     # update progress bar. Otherwise, use stdout.
     if is_interactive:
@@ -45,21 +46,21 @@ def PerformChecksum(filename, digest, delete=False, repeat=3, pbar=None, is_inte
 
         except (IOError, OSError) as e:
             if e.errno != 32: # Ignore EPIPE (broken pipe)
-                click.echo(click.style('ERROR', fg='yellow'), out_fp, nl=False, color=is_interactive)
-                click.echo(': {filename}'.format(filename=filename), out_fp, nl=False)
-                tqdm.write(out_fp.getvalue())
+                click.echo(click.style('ERROR', fg='yellow'), out_fp, nl=False, color=color)
+                click.echo(': {filename}'.format(filename=filename), out_fp, nl=(not is_interactive))
+                out.write(out_fp.getvalue())
                 return False
         except KeyboardInterrupt:
             print()
             sys.exit(130)
 
     if delete:
-        click.echo(click.style('DELETE', fg='magenta'), out_fp, nl=False, color=is_interactive)
-        click.echo(': {filename}'.format(filename=filename), out_fp, nl=False)
+        click.echo(click.style('DELETE', fg='magenta'), out_fp, nl=False, color=color)
+        click.echo(': {filename}'.format(filename=filename), out_fp, nl=(not is_interactive))
         os.unlink(filename)
     else:
-        click.echo(click.style('FAILED', fg='red'), out_fp, nl=False, color=is_interactive)
-        click.echo(': {filename}'.format(filename=filename), out_fp, nl=False)
+        click.echo(click.style('FAILED', fg='red'), out_fp, nl=False, color=color)
+        click.echo(': {filename}'.format(filename=filename), out_fp, nl=(not is_interactive))
 
     out.write(out_fp.getvalue())
     return False
@@ -97,6 +98,7 @@ def main(digest_files, delete, batch_mode, repeat, jobs):
 
     total_files = len(filenames_to_digest)
     pbar = None
+    istty = click._compat.isatty(sys.stdout)
     if is_interactive:
         click.echo('Checksumming {total_files} file(s) from {total_digests} digest(s).'.format(total_files=total_files, total_digests=len(digest_files)))
         pbar = tqdm(
@@ -106,7 +108,7 @@ def main(digest_files, delete, batch_mode, repeat, jobs):
             dynamic_ncols=True,
             position=0)
 
-    fnChecksum = functools.partial(PerformChecksum, delete=delete, repeat=repeat, pbar=pbar, is_interactive=is_interactive)
+    fnChecksum = functools.partial(PerformChecksum, delete=delete, repeat=repeat, pbar=pbar, is_interactive=is_interactive, color=istty)
 
     #with multiprocessing.dummy.Pool(jobs, initializer=tqdm.set_lock, initargs=(RLock(),)) as pool:
     with multiprocessing.Pool(jobs) as pool:
