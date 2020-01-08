@@ -27,3 +27,6 @@ alias .....='cd ../../../..'
 
 # Better defaults
 alias dd="dd status=progress "
+
+# Increase number of file handles
+alias ulimit-n-increase="ulimit -n $(dc -e '2 17 ^ p')"
