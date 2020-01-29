@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # Delete old files
-rm $XDG_CONFIG_HOME/bash/profile.d/bat.sh
+rm -f $XDG_CONFIG_HOME/bash/profile.d/bat.sh
