@@ -10,7 +10,7 @@ elif hash bat 2> /dev/null; then
 	_BAT_CMD=bat
 fi
 
-if [ -n $_BAT_CMD ]; then
+if [[ -n $_BAT_CMD ]]; then
 	export PAGER=$_BAT_CMD
 
 	# Use bat for man
@@ -25,3 +25,5 @@ else
 	alias batcat="cat"
 	alias batp="cat"
 fi
+
+unset _BAT_CMD
