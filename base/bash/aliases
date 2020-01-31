@@ -30,3 +30,6 @@ alias dd="dd status=progress "
 
 # Increase number of file descriptors
 alias ulimit-n-increase="ulimit -n $(dc -e '2 16 ^ p')"
+
+# transmission
+alias tsm=transmission-remote
