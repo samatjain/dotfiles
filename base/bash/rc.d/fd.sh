@@ -7,7 +7,9 @@ elif hash fd 2> /dev/null; then
 	_FD_CMD=fd
 fi
 
-if [ -n $_FD_CMD ]; then
+if [[ -n $_FD_CMD ]]; then
 	alias fd=$_FD_CMD
 	alias fdfind=$_FD_CMD
 fi
+
+unset _FD_CMD
