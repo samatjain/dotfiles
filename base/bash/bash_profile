@@ -18,8 +18,11 @@ export HISTCONTROL="ignoredups"
 # Colored grep
 export GREP_COLOR='1;33'
 
-# Tell less not to beep and also display colours
-export LESS="-QR"
+# less configuration
+# * -Q: do not beep
+# * -R: allow colors
+# * -i: case-insensitive search
+export LESS="-QRi"
 
 # Vim, disable X support
 export VISUAL="vim -X"
