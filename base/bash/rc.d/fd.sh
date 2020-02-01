@@ -1,4 +1,5 @@
 #!/bin/bash
+# zsh compatible
 
 # from Debian's fdfind package
 if hash fdfind 2> /dev/null; then

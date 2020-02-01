@@ -1,4 +1,5 @@
 #!/bin/bash
+# zsh compatible
 
 # Much of this is inspired from:
 #   https://github.com/eth-p/bat-extras/blob/master/src/batman.sh
