@@ -8,11 +8,11 @@ _GNU_PARALLEL_PRESENT=$?
 ! hash xxhsum 2> /dev/null
 _XXH_PRESENT=$?
 for i in "$@"; do
-	i=$(basename $i)
-	dst=$i
+	i="$(basename "$i")"
+	dst="$i"
 	# If path argument is ".", then use CWD instead
-	if [ $i = "." ]; then
-		dst=$(basename $(pwd))
+	if [ "$i" = "." ]; then
+		dst="$(basename $(pwd))"
 		echo "# WARNING: Remove this file"
 	fi
 	if [ $_GNU_PARALLEL_PRESENT -eq 1 ]; then
