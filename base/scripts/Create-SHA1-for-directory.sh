@@ -7,7 +7,7 @@ _GNU_PARALLEL_PRESENT=$?
 # Check if xxhsum is installed
 ! hash xxhsum 2> /dev/null
 _XXH_PRESENT=$?
-for i in $@; do
+for i in "$@"; do
 	i=$(basename $i)
 	dst=$i
 	# If path argument is ".", then use CWD instead
