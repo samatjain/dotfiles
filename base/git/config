@@ -48,6 +48,9 @@
 	# Safer alternative to `git push --force`
 	please = push --force-with-lease
 
+	# Short commit ID for commit in repository
+	short = rev-parse --short
+
 [apply]
 	whitespace = strip
 [diff]
