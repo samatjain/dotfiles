@@ -1,14 +1,27 @@
+# See https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Readline-Interaction
 set bell-style none
 set completion-ignore-case on
 set editing-mode vi
 set keymap vi
-set mark-directories on
-set mark-symlinked-directories on
-set visible-stats on
+
 set horizontal-scroll-mode Off
 set show-all-if-ambiguous on
 set completion-ignore-case on
 set completion-map-case on
+#set show-mode-in-prompt on
+
+# Color and markings
+set mark-directories on
+set colored-stats on
+set visible-stats on
+set mark-symlinked-directories on
+set colored-completion-prefix on
+set menu-complete-display-prefix On
+
+# Show vi mode insert/command mode in prompt
+#set show-mode-in-prompt on
+#set vi-cmd-mode-string "(c)"
+#set vi-ins-mode-string ""
 
 # Enable 8 bit input.
 #set meta-flag On
@@ -32,11 +45,17 @@ set completion-map-case on
 "\eOc": forward-word
 
 # for linux console
+# Home
 "\e[1~": beginning-of-line
+# End
 "\e[4~": end-of-line
+# Page Up
 "\e[5~": beginning-of-history
+# Page Down
 "\e[6~": end-of-history
+# Delete
 "\e[3~": delete-char
+# Insert
 "\e[2~": quoted-insert
 
 # for xterm
