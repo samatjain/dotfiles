@@ -34,7 +34,7 @@ ppwd() {
 
 cl() { cd "$1" || exit && ls; }
 # Create and change into a directory
-mdcd() { mkdir -p "$1"; cd "$1" || exit; }
+mkcd() { mkdir -p "$1"; cd "$1" || exit; }
 
 # Print the full path to a file
 fp() {
