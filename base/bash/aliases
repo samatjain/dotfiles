@@ -33,3 +33,5 @@ alias ulimit-n-increase="ulimit -n $(dc -e '2 16 ^ p')"
 
 # transmission
 alias tsm=transmission-remote
+
+alias ap=ansible-playbook
