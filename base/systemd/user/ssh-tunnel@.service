@@ -8,7 +8,7 @@ After=network-online.target
 ExecStart=/usr/bin/ssh -v -N -T -o "ServerAliveInterval 15" -o "ServerAliveCountMax 3" -o "ExitOnForwardFailure=yes" -o "ControlPersist=no" %i
 # TODO: Once systemd can do some kind of exponential backup, set that up here
 RestartSec=5
-Restart=Always
+Restart=always
 
 [Install]
 WantedBy=default.target

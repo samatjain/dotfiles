@@ -13,7 +13,7 @@ Environment="AUTOSSH_GATETIME=0"
 ExecStart=/usr/bin/autossh -M 0 -q -N -o "ServerAliveInterval 15" -o "ServerAliveCountMax 3" -o "ExitOnForwardFailure=yes" -o "ControlPersist=no" %i
 # TODO: Once systemd can do some kind of exponential backup, set that up here
 RestartSec=5
-Restart=Always
+Restart=always
 
 [Install]
 WantedBy=default.target
