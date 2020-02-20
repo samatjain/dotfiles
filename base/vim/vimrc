@@ -128,6 +128,9 @@ endfunc
 
 nnoremap <C-n> :call NumberToggle()<cr>
 
+" always show statusline
+set laststatus=2
+
 " https://www.dustri.org/b/lightweight-and-sexy-status-bar-in-vim.html
 set statusline=
 set statusline+=%#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
