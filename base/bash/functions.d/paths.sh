@@ -15,11 +15,19 @@ cd() {
 # CWD's basename
 # zsh compatible
 bpwd() {
-	basename $(pwd)
+	if [[ -n "$1" ]]; then
+		basename "$1"
+	else
+		basename $(pwd)
+	fi
 }
 
 # CWD's parent
 # zsh compatible
 ppwd() {
-	dirname $(pwd)
+	if [[ -n "$1" ]]; then
+		dirname "$1"
+	else
+		dirname $(pwd)
+	fi
 }
