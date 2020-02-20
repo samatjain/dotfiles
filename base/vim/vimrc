@@ -66,6 +66,7 @@ set fileencoding=utf8
 
 au BufNewFile,BufRead *.rst set ft=rest                    " ReStructured Text
 au BufNewFile,BufRead *.module,*.install,*.theme setf php  " Drupal
+au BufNewFile,BufRead .ok setf sh                          " ok file
 
 autocmd BufRead,BufNewFile *.es6 setfiletype javascript    " JavaScript ES6
 
