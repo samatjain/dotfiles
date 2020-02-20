@@ -9,7 +9,7 @@ cd() {
     else
         builtin cd "$@"
     fi
-    echo -e "    \033[1;30m"`builtin pwd`"\033[0m"
+    echo -e "    \033[1;30m""$(builtin pwd)""\033[0m"
 }
 
 # CWD's basename
@@ -18,7 +18,7 @@ bpwd() {
 	if [[ -n "$1" ]]; then
 		basename "$1"
 	else
-		basename $(pwd)
+		basename "$(pwd)"
 	fi
 }
 
@@ -28,6 +28,32 @@ ppwd() {
 	if [[ -n "$1" ]]; then
 		dirname "$1"
 	else
-		dirname $(pwd)
+		dirname "$(pwd)"
 	fi
+}
+
+function cl() { cd "$1" || exit && ls; }
+function mdcd() { mkdir "$1"; cd "$1" || exit; }
+
+# Print the full path to a file
+function fp() {
+	if [[ -n "$1" ]]; then
+		readlink -f "$1"
+	else
+		readlink -f .
+	fi
+}
+#alias fp='readlink -f'
+#function fp() {
+#	echo `pwd`/$1
+#}
+
+# Print the full path to a file, including hostname
+function fpr() {
+	echo "$(hostname):$(fp "$@")"
+}
+
+# Print the full path to a file, including hostname.local for use on LANs
+function fpl() {
+	echo "$(hostname).local:$(fp "$@")"
 }

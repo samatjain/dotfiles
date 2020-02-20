@@ -74,8 +74,6 @@ function ssh-reagent() {
 
 ################################################################################
 
-function cl() { cd $1; ls; }
-function mdcd() { mkdir $1; cd $1; }
 function date-stamp() { date +%Y%m%d; }
 function date-stamp-readable() { date '+%Y%m%d-%a-%b-%d-%Y'; }
 function time-stamp() { date +%Y%m%d-%H%M%S; }
@@ -147,31 +145,6 @@ function mac2unix()
 {
 	mv "$1" "$1.mac"
 	sed 's/\r/\n/gi' "$1.mac" > "$1"
-}
-
-# Print the full path to a file
-function fp() {
-	if [ -n "$1" ]; then
-		readlink -f $1
-	else
-		readlink -f .
-	fi
-}
-#alias fp='readlink -f'
-#function fp() {
-#	echo `pwd`/$1
-#}
-
-# Print the full path to a file, including hostname
-function fpr() {
-#	echo `hostname`:`pwd`/$1
-	echo $(hostname):$(fp $@)
-}
-
-# Print the full path to a file, including hostname.local for use on LANs
-function fpl() {
-#	echo `hostname`:`pwd`/$1
-	echo $(hostname).local:$(fp $@)
 }
 
 function highlight() {
