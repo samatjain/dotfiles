@@ -151,11 +151,6 @@ function highlight() {
 	e="$1"; shift; grep --col=always -Eih "$e|$" "$@";
 }
 
-# Create and change into a directory
-function md() {
-	mkdir -p "$1" && cd "$!"
-}
-
 # Store current path in X clipboard buffer
 #  from http://www.jukie.net/~bart/blog/20090504101605
 function xpwd() {

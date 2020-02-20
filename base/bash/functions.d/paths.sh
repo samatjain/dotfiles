@@ -32,11 +32,12 @@ ppwd() {
 	fi
 }
 
-function cl() { cd "$1" || exit && ls; }
-function mdcd() { mkdir "$1"; cd "$1" || exit; }
+cl() { cd "$1" || exit && ls; }
+# Create and change into a directory
+mdcd() { mkdir -p "$1"; cd "$1" || exit; }
 
 # Print the full path to a file
-function fp() {
+fp() {
 	if [[ -n "$1" ]]; then
 		readlink -f "$1"
 	else
@@ -49,11 +50,11 @@ function fp() {
 #}
 
 # Print the full path to a file, including hostname
-function fpr() {
+fpr() {
 	echo "$(hostname):$(fp "$@")"
 }
 
 # Print the full path to a file, including hostname.local for use on LANs
-function fpl() {
+fpl() {
 	echo "$(hostname).local:$(fp "$@")"
 }
