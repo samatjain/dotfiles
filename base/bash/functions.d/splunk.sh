@@ -9,3 +9,9 @@ function splunk() {
 	fi
 	${_SPLUNK_HOME}/bin/splunk "$@"
 }
+
+function splunk-restart() {
+	# TODO: if we have /opt/splunk, assume we're using the Splunk user and sudo to that user.
+	# TODO: if we're running under systemd, sudo to root and use systemd for restart
+	splunk restart
+}
