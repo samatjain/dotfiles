@@ -31,7 +31,7 @@ mkdir -p "$HOME/.local/bin" "$HOME/src/git.other"
 
 # dots expects stuff in ~/.local/etc/… create symlink so stuff stays working
 # will be replaced by config option in future version of dots
-ln -s "$HOME/src/git.other/dotfiles" "$HOME/.local/etc"
+ln -sf "$HOME/src/git.other/dotfiles" "$HOME/.local/etc"
 
 # contrib/initalize script
 
