@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Delete old files
+rm -f $XDG_CONFIG_HOME/bash/profile.d/firefox
