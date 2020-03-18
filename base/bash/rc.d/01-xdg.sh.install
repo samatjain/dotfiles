@@ -2,3 +2,4 @@
 
 # Delete old files
 rm -f $XDG_CONFIG_HOME/bash/rc.d/01-xdg
+rm -f $XDG_CONFIG_HOME/bash/rc.d/xdg
