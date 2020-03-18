@@ -20,7 +20,7 @@ if [[ -n $_BAT_CMD ]]; then
 
 	alias bat=$_BAT_CMD
 	alias batcat=$_BAT_CMD
-	alias batp="$_BAT_CMD --style plain"
+	alias batp="$_BAT_CMD --style plain --wrap=never"
 else
 	alias bat="cat"
 	alias batcat="cat"
