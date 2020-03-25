@@ -13,7 +13,7 @@ def process_file(filename):
     file_iterator = open(filename)
     try:
         for line in file_iterator:
-            line = line.split()
+            line = line.split(maxsplit=1)
             crc = line[0].strip()
             filename = line[1].strip()
             yield crc, filename
