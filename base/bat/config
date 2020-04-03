@@ -4,3 +4,5 @@
 --map-syntax h:cpp
 # Use .ini format for .conf files
 --map-syntax conf:ini
+# Use .ini format for systemd .service files
+--map-syntax service:ini
