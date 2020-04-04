@@ -25,6 +25,16 @@ Files in this repository have been inspired by:
  * My own dotfiles, littered across many different types of machines
  * [Evan Purkhiser's dotfiles-personal](https://github.com/EvanPurkhiser/dots-personal/) (since he's the creator of dots)
 
+## Configuration profiles
+
+### common/egypt
+
+Scripts, settings, etc only applicable to the egypt network.
+
+### common/rome
+
+Scripts, settings, etc only applicable to the rome network.
+
 ## System packages
 
 The configuration in this repository will work best w/ additional system packages installed.
@@ -43,3 +53,4 @@ After running the above, to install vim plugins for the current user:
     vim-addons install pathogen
     vim-addons install editorconfig
     vim-addons install syntastic
+
