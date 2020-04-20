@@ -12,7 +12,8 @@ elif hash bat 2> /dev/null; then
 fi
 
 if [[ -n $_BAT_CMD ]]; then
-	export PAGER=$_BAT_CMD
+	export PAGER="$_BAT_CMD"
+	export BAT_PAGER="less -RF"
 
 	# Use bat for man
 	export MANPAGER='sh -c "col -bx | '"$(printf "%q" $_BAT_CMD)"' --language man --style plain"'
