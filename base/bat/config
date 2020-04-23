@@ -1,8 +1,10 @@
 # disable grid
 --style="numbers,changes,header"
 # C++ syntax (instead of C) for .h header files
---map-syntax h:cpp
+--map-syntax=h:cpp
 # Use .ini format for .conf files
---map-syntax conf:ini
+--map-syntax=conf:ini
 # Use .ini format for systemd .service files
---map-syntax service:ini
+--map-syntax=service:ini
+# Display tabs as 2 spaces
+--tabs=2
