@@ -69,6 +69,7 @@ au BufNewFile,BufRead *.rst set ft=rest                      " ReStructured Text
 au BufNewFile,BufRead *.module,*.install,*.theme set ft=php  " Drupal
 au BufNewFile,BufRead .ok set ft=sh                          " ok file
 au BufNewFile,BufRead *.conf set ft=dosini                   " conf file (e.g. Splunk)
+au BufNewFile,BufRead *.code-workspace set ft=json           " Visual Studio Code workspace
 
 au BufRead,BufNewFile *.es6 set ft=javascript                " JavaScript ES6
 
