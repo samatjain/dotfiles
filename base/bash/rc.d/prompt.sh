@@ -18,7 +18,7 @@ function set_prompt() {
 	DarkGrey='\[\e[0;1;30m\]'
 
 	# Set shell title if we're not in a Linux console
-	if [ $TERM != "linux" ]; then
+	if [[ $TERM != "linux" ]]; then
 		PS1="\[\e]2;\u@\h:\w\a\\]"
 	fi
 

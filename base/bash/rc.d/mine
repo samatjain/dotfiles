@@ -12,7 +12,7 @@ unset MAILCHECK
 hash lesspipe 2> /dev/null && eval "$(lesspipe)"
 
 # Fix backspace problems
-if [ -t 0 ]; then
+if [[ -t 0 ]]; then
 	stty erase ^?
 fi
 
@@ -177,17 +177,17 @@ function single-cpu-affinity() {
 
 # Source local configurations
 for file in "$HOME/sys/config/"*.sh; do
-	if [ -x "$file" ]; then
+	if [[ -x "$file" ]]; then
 		source "$file"
 	fi
 done
 
 # Source SSH agent environment
-if [ -f "$HOME/.keychain/$(hostname)-sh" ]; then
+if [[ -f "$HOME/.keychain/$(hostname)-sh" ]]; then
 	source "$HOME/.keychain/$(hostname)-sh"
 fi
 
 # Source bash-completion if not sourced already
-#if [ -z "$BASH_COMPLETION" ] && [ -f /etc/bash_completion ]; then
+#if [[ -z "$BASH_COMPLETION" ]] && [[ -f /etc/bash_completion ]]; then
 #	source /etc/bash_completion
 #fi

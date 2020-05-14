@@ -9,13 +9,13 @@ export PATH="$HOME/.local/bin:$PATH"
 export INPUTRC="$XDG_CONFIG_HOME/bash/inputrc"
 
 # Set the session ssh-agent socket path (If it's not set)
-[ -z "$SSH_AUTH_SOCK" ] && export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent"
+[[ -z "$SSH_AUTH_SOCK" ]] && export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent"
 
 # Look for terminfo files under data
-[ -d "$XDG_DATA_HOME/terminfo" ] && export TERMINFO="$XDG_DATA_HOME/terminfo"
+[[ -d "$XDG_DATA_HOME/terminfo" ]] && export TERMINFO="$XDG_DATA_HOME/terminfo"
 
 # httpie
-hash http       2>/dev/null && export HTTPIE_CONFIG_DIR="$XDG_CONFIG_HOME/httpie"
+hash http 2>/dev/null && export HTTPIE_CONFIG_DIR="$XDG_CONFIG_HOME/httpie"
 
 # GNU PGP configuration directory
 hash gpg 2> /dev/null && export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
