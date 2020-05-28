@@ -5,15 +5,19 @@
 #   systemctl --user enable transmission-daemon-update-blocklists.timer
 # Enable starting services w/out login
 #   sudo loginctl enable-longer ${USER}
+# See also:
+# - https://github.com/transmission/transmission/blob/master/daemon/transmission-daemon.service
 [Unit]
 Description=Transmission BitTorrent Daemon for %u
 After=network.target
 
 [Service]
+Type=notify
 IOSchedulingClass=idle
 ExecStart=/usr/bin/transmission-daemon --foreground
 ExecReload=/bin/kill -s HUP $MAINPID
 Restart=always
+NoNewPrivileges=true
 
 [Install]
 WantedBy=default.target
