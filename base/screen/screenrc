@@ -2,7 +2,7 @@ startup_message off
 
 hardstatus on
 hardstatus alwayslastline
-hardstatus string "%?%{wk}%-Lw%?%{yK}%n*%f %t%?(%u)%?%?%{wk}%+Lw%? %{gk}%=%c %{yk}%d/%M/%Y"
+hardstatus string "%?%{wk}%-Lw%?%{yK}%n*%f %t%?(%u)%?%?%{wk}%+Lw%? %{gk}%=%c %{yk}%M %d"
 
 # Allows root to attach to this user's screen sessions
 multiuser on
