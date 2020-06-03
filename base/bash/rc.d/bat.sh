@@ -7,7 +7,8 @@
 # from Debian's bat package
 if hash batcat 2> /dev/null; then
 	_BAT_CMD=batcat
-elif hash bat 2> /dev/null; then
+fi
+if hash bat 2> /dev/null; then
 	_BAT_CMD=bat
 fi
 
