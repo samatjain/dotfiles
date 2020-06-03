@@ -1,3 +1,5 @@
 #!/bin/sh
 
 ln -sf $XDG_CONFIG_HOME/wget/wgetrc ~/.wgetrc
+mkdir -p  $XDG_DATA_HOME/wget/
+mv ~/.wget-hsts $XDG_DATA_HOME/wget/hsts
