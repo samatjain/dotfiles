@@ -58,3 +58,8 @@ fpr() {
 fpl() {
 	echo "$(hostname).local:$(fp "$@")"
 }
+
+fix-permissions() {
+  fd -t d -0 | xargs -0 -P 0 chmod 755 || true
+  fd -t f -0 | xargs -0 -P 0 chmod 644 || true
+}
