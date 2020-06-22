@@ -4,13 +4,23 @@
 [color]
 	branch = auto
 	diff = auto
+	interactive = auto
 	status = auto
 	ui = auto
+[color "branch"]
+	current = green reverse
+[color "diff"]
+	meta = magenta
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = red
 [alias]
 	aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort | bat --language ini --style plain
-	st = status -s
+	st = status -sb
 	ci = commit
 	co = checkout
+	cp = cherry-pick
 	sw = switch
 	br = branch
 	diff = diff --word-diff
