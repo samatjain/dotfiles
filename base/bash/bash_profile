@@ -43,6 +43,9 @@ export REPORTBUGMAIL="debian@samat.org"
 # Don't add quotes when using ls
 export QUOTING_STYLE=literal
 
+# Source shellcheck configuration
+hash shellcheck 2>/dev/null && source "$XDG_CONFIG_HOME/bash/shellcheck"
+
 # Source keychain (ssh-agent and gpg-agent) environment
 #  Machine is responsible for both SSH and GnuPG
 if [[ -f "$HOME/.keychain/$(hostname)-sh-gpg" ]]; then

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# SC1090  Can't follow non-constant source.
+export SHELLCHECK_OPTS="-e SC1090"
