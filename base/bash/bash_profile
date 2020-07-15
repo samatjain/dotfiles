@@ -28,6 +28,9 @@ export LESS="-QRi"
 export VISUAL="vim -X"
 export EDITOR=${VISUAL}
 
+# When using direnv, don't warn about slow execution
+export DIRENV_WARN_TIMEOUT=20m
+
 # Default web browser
 export BROWSER=firefox
 
