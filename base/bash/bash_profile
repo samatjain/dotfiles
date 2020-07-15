@@ -40,6 +40,9 @@ export SINCE=$HOME/.cache/since/since
 # For Debian/Ubuntu's bug reporting tool
 export REPORTBUGMAIL="debian@samat.org"
 
+# Don't add quotes when using ls
+export QUOTING_STYLE=literal
+
 # Source keychain (ssh-agent and gpg-agent) environment
 #  Machine is responsible for both SSH and GnuPG
 if [[ -f "$HOME/.keychain/$(hostname)-sh-gpg" ]]; then
