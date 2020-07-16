@@ -14,6 +14,8 @@ eval $(dircolors -b)
 #export CDPATH=".:~"
 export HISTIGNORE="ls:clear"
 export HISTCONTROL="ignoredups"
+# Almost W3CDTF; missing ":" in timezone
+export HISTTIMEFORMAT="%FT%R%z "
 
 # Colored grep
 export GREP_COLOR='1;33'
