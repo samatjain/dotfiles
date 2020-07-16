@@ -4,3 +4,7 @@ ln -sf $XDG_CONFIG_HOME/bash/bashrc ~/.bashrc
 
 # Quiet login (disable MOTD, banner, etc)
 touch ~/.hushlogin
+
+# Ensure cache and data directories are setup
+mkdir -p $XDG_CACHE_HOME
+mkdir -p $XDG_DATA_HOME
