@@ -15,6 +15,9 @@
 	added = green
 	changed = yellow
 	untracked = red
+[branch]
+	# Sort, recently changed branches last
+	sort = committerdate
 [alias]
 	aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort | bat --language ini --style plain
 	st = status -sb
@@ -100,6 +103,8 @@
 	path = user
 [merge]
 	conflictstyle = diff3
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
 [submodule]
 	recurse = true
 [status]
