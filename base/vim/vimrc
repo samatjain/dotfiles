@@ -76,6 +76,10 @@ au BufRead,BufNewFile *.es6 set ft=javascript                " JavaScript ES6
 au BufNewFile,BufRead /etc/nginx/* set ft=nginx
 au BufNewFile,BufRead /var/log/* set ft=messages
 
+" git-revise, from https://github.com/mystor/git-revise/pull/51
+au BufNewFile,BufRead git-revise-todo       setf gitrebase
+au BufNewFile,BufRead COMMIT_EDITMSG,MERGE_MSG,TAG_EDITMSG  setf gitcommit
+
 au BufEnter * :syntax sync fromstart  " Force syntax highlighting
 au FileType make setlocal noexpandtab " Disable expandtab for Makefiles
 
