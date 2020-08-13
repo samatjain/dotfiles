@@ -1,6 +1,8 @@
+#!/bin/bash
+
 # Version of unzip that emulates tar's strip-components option
 # Will extract to CWD if destination is not set!
-unzip-strip() (
+unzip-strip() {
     local zip=$1
     local dest=${2:-.}
     local temp=$(mktemp -d) && unzip -d "$temp" "$zip" && mkdir -p "$dest" &&
@@ -10,4 +12,7 @@ unzip-strip() (
     else
         mv "$temp"/* "$dest"
     fi && rmdir "$temp"/* "$temp"
-)
+}
+
+# Max non-ultra compression, use all threads, rsyncable
+alias zstd-max="zstd -z -19 -T0 --rm --rsyncable"

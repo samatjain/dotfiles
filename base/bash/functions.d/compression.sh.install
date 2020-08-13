@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Remove old files
+rm -rf $XDG_CONFIG_HOME/bash/functions.d/unzip-strip.sh
