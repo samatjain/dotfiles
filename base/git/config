@@ -68,6 +68,9 @@
 	# Short commit ID for commit in repository
 	short = rev-parse --short
 
+	# Interactive rebase with the given number of latest commits.
+	rb = "!r() { git rebase -i HEAD~$1; }; r"
+
 [apply]
 	whitespace = strip
 [diff]
