@@ -78,6 +78,8 @@
 	indentHeuristic = on
 	colorMoved = default
 	submodule = log
+	# Detect copies as well as renames.
+	renames = copies
 [diff "odf"]
 	# Text diff for OpenDocument files; requires repository changes as well
 	#  from http://git.or.cz/gitwiki/GitTips#HowtousegittotrackOpenDocument.28OpenOffice.2CKoffice.29files.3F
