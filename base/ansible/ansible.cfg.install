@@ -1,3 +1,0 @@
-#!/bin/sh
-
-ln -sf $XDG_CONFIG_HOME/ansible/ansible.cfg ~/.ansible.cfg

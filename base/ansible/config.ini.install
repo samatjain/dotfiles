@@ -1,0 +1,4 @@
+#!/bin/sh
+
+rm -f $XDG_CONFIG_HOME/ansible/ansible.cfg
+ln -sf $XDG_CONFIG_HOME/ansible/config.ini ~/.ansible.cfg
