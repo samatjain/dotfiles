@@ -73,6 +73,8 @@ au BufNewFile,BufRead *.code-workspace set ft=json           " Visual Studio Cod
 
 au BufRead,BufNewFile *.es6 set ft=javascript                " JavaScript ES6
 
+au BufNewFile,BufRead *.t set ft=cram                        " cram test
+
 au BufNewFile,BufRead /etc/nginx/* set ft=nginx
 au BufNewFile,BufRead /var/log/* set ft=messages
 
