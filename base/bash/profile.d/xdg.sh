@@ -26,5 +26,21 @@ hash hg 2> /dev/null && export HGRCPATH="$XDG_CONFIG_HOME/hg/config"
 # GNU screen configuration file
 hash screen 2> /dev/null && export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
 
+if hash aws 2>/dev/null
+then
+	export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
+	export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME/aws/credentials"
+fi
+
+if hash redis-cli 2>/dev/null
+then
+	export REDISCLI_HISTFILE="$XDG_DATA_HOME/rediscli_history"
+fi
+
+hash ansible 2>/dev/null && export     ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/config.ini"
+
+hash docker  2>/dev/null && export      DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+hash wget    2>/dev/null && export             WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+
 # Less history file location
 export LESSHISTFILE="$XDG_CACHE_HOME/less_history"
