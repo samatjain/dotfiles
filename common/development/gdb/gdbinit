@@ -1,0 +1,2 @@
+# gdb 9.1: multithreaded symbol loading
+maint set worker-threads unlimited
