@@ -15,10 +15,12 @@ export MOZ_WEBRENDER=1
 # Causes crashes on Thunderbird <68.
 export GTK_USE_PORTAL=1
 
-# Enable VA-API
+# Enable EGL and VA-API
 # from https://www.reddit.com/r/firefox/comments/igcafy/firefox_800_see_all_new_features_updates_and_fixes/g2w6eme/?context=3
 # Also set in about:config:
-# • media.ffmpeg.dmabuf-textures.enabled = true
+# • gfx.x11-egl.force-enabled = true
 # • media.ffmpeg.vaapi.enabled = true
 # • media.ffvpx.enabled = false
+# Supposedly this variable no longer does anything in Firefox > 88, the
+# above prefs.js settings are used instead.
 export MOZ_X11_EGL=1
