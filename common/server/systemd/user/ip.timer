@@ -1,0 +1,10 @@
+# systemctl --user enable --now ip.timer
+[Unit]
+Description=Report IP every 3h
+
+[Timer]
+OnStartupSec=0
+OnUnitActiveSec=3h
+
+[Install]
+WantedBy=timers.target

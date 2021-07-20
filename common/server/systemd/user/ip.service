@@ -1,0 +1,15 @@
+# Use `systemctl --user enable --now ip.timer` to enable timer, and
+# `systemctl --user start ip.service` to run immediately.
+[Unit]
+Description=Report IP
+After=network-online.target
+
+[Service]
+ExecStart=wget --no-check-certificate -4 -qnv 'http://stuff.samat.org/ip?hostname=%H' -O -
+# Wrap IPv6 so we can ignore failures on hosts w/out IPv6
+ExecStart=/bin/sh -c "wget --no-check-certificate -6 -qnv 'http://stuff.samat.org/ip?hostname=%H' -O -; exit 0"
+Type=oneshot
+RemainAfterExit=false
+
+[Install]
+WantedBy=default.target
