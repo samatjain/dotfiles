@@ -129,7 +129,9 @@ Host chieftain
 	Hostname chieftain.sv.splunk.com
 	ForwardAgent yes
 
-Host samatj-x1c.local
+# Splunk laptop
+Host sl
+	Hostname samatj-x1e.local
 	User samatj
 
 Host *.splunkcloud.com, *.splunkcloud.systems
