@@ -1,15 +1,16 @@
 # To enable:
 #   systemctl --user start transmission-daemon
 #   systemctl --user enable transmission-daemon
-#   systemctl --user start transmission-daemon-update-blocklists.timer
-#   systemctl --user enable transmission-daemon-update-blocklists.timer
+#   systemctl --user start transmission-update-blocklists.timer
+#   systemctl --user enable transmission-update-blocklists.timer
 # Enable starting services w/out login
-#   sudo loginctl enable-longer ${USER}
+#   sudo loginctl enable-linger ${USER}
 # See also:
 # - https://github.com/transmission/transmission/blob/master/daemon/transmission-daemon.service
 [Unit]
 Description=Transmission BitTorrent Daemon for %u
 After=network.target
+#RequiresMountsFor=/mnt/somewhere
 
 [Service]
 Type=notify
