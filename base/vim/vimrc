@@ -85,6 +85,8 @@ au BufNewFile,BufRead COMMIT_EDITMSG,MERGE_MSG,TAG_EDITMSG  setf gitcommit
 au BufEnter * :syntax sync fromstart  " Force syntax highlighting
 au FileType make setlocal noexpandtab " Disable expandtab for Makefiles
 
+autocmd BufRead,BufNewFile *.nfo,*.NFO set ft=nfo
+
 inoremap <Nul> <C-x><C-o>             " Remap Ctrl+X/Ctrl+O to Ctrl+Space
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
