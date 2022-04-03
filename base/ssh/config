@@ -47,6 +47,16 @@ Host titus
 	Hostname titus.hotnudiegirls.com
 	User xjjk
 	ForwardAgent yes
+# Formerly paris
+Host carus
+	Hostname carus.hotnudiegirls.com
+	User xjjk
+	ForwardAgent yes
+# Formerly amsterdam
+Host decius
+	Hostname decius.hotnudiegirls.com
+	User xjjk
+	ForwardAgent yes
 Host nerva
 	Hostname nerva.hotnudiegirls.com
 	User xjjk
