@@ -19,7 +19,7 @@ export   XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 if [[ ! -d "$HOME/src/git.other/dots" ]]
 then
 	echo -e "\033[0;32m==>\033[0m Installing dots managment utility"
-	git clone -q https://github.com/EvanPurkhiser/dots "$HOME/src/git.other/dots"
+	git clone -q https://github.com/EvanPurkhiser/dots "$HOME/src/git.other/dots" --branch releases/1.x
 fi
 
 # Setup the environment for the new dots repository
