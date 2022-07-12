@@ -19,6 +19,7 @@ ExecStart=/usr/bin/transmission-daemon --foreground
 ExecReload=/bin/kill -s HUP $MAINPID
 Restart=always
 NoNewPrivileges=true
+MemoryDenyWriteExecute=true
 
 [Install]
 WantedBy=default.target
