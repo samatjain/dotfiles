@@ -10,9 +10,7 @@ while [ $I -le $MAX_RESTARTS ]; do
 	I=$(( $I + 1 ))
 	# For FAT32 partitions, --modify-window is required. May have side effects
 	#  on other partition types
-	rsync -rlptoDPv --modify-window=1 "$@"
-	# One day when CentOS 7 is EOL
-	#rsync -rlptoDPv --modify-window=1 --info=progress2 "$@"
+	rsync -rlptoDHS --partial --modify-window=1 --info=progress2 "$@"
 	LAST_EXIT_CODE=$?
 	if [ $LAST_EXIT_CODE -eq 0 ]; then
 		break
