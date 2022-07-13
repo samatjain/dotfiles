@@ -6,6 +6,11 @@ shopt -s cmdhist
 shopt -s extglob
 shopt -u mailwarn	     # Turn off new mail notification
 shopt -s histappend
+
+# Expand variables when using tab completion
+# Described here: https://askubuntu.com/questions/70750/how-to-get-bash-to-stop-escaping-during-tab-completion
+shopt -s direxpand
+
 unset MAILCHECK
 
 # Make less more friendly for non-text input files, see lesspipe(1)
