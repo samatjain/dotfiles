@@ -25,10 +25,10 @@ def stop_ssh_control_masters():
     """Stop ssh control master processes."""
     with os.scandir(SSH_MUX_PATH) as dir_items_it:
         for e in dir_items_it:
-            cmd = f'ssh -S {e.path} -O exit true &'
+            cmd = f"ssh -S {e.path} -O exit true &"
             print(cmd)
             subprocess.run(cmd, shell=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     stop_ssh_control_masters()
