@@ -20,6 +20,7 @@ ExecReload=/bin/kill -s HUP $MAINPID
 Restart=always
 NoNewPrivileges=true
 MemoryDenyWriteExecute=true
+TimeoutStartSec=3600
 
 [Install]
 WantedBy=default.target
