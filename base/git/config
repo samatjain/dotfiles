@@ -128,3 +128,5 @@
 	recurse = true
 [status]
 	submodulesummary = true
+[init]
+	defaultBranch = trunk
