@@ -2,6 +2,11 @@
 #	excludesfile = ~/.config/git/ignore
 	pager = less -XF
 
+	# Treat spaces before tabs and all kinds of trailing whitespace as an error.
+	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+	# [default] trailing-space: looks for spaces at the end of a line
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
 	# Speed up commands involving untracked files such as `git status`.
 	# https://git-scm.com/docs/git-update-index#_untracked_cache
 	# Not supported by all filesystems! Check w/
