@@ -130,3 +130,5 @@
 	submodulesummary = true
 [init]
 	defaultBranch = trunk
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
