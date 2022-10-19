@@ -42,5 +42,7 @@ hash ansible 2>/dev/null && export     ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/
 hash docker  2>/dev/null && export      DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 hash wget    2>/dev/null && export             WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgrep.rc"
+
 # Less history file location
 export LESSHISTFILE="$XDG_CACHE_HOME/less_history"

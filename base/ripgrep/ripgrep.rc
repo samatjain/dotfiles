@@ -1,0 +1,2 @@
+--type-add
+cksum:*.{md5,sfv,sha1,xxh}
