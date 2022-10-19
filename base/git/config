@@ -1,6 +1,12 @@
 [core]
 #	excludesfile = ~/.config/git/ignore
 	pager = less -XF
+
+	# Speed up commands involving untracked files such as `git status`.
+	# https://git-scm.com/docs/git-update-index#_untracked_cache
+	# Not supported by all filesystems! Check w/
+	# `git update-index --test-untracked-cache`
+	untrackedCache = true
 [color]
 	branch = auto
 	diff = auto
