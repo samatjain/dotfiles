@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [[ "$#" -lt 1 ]]; then
+	echo "Usage: ssh-synology [ARGS]..."
+	echo "Wrapper around ssh for a Synology OS host, where SSH key auth is not supported."
+	exit 1
+fi
+
+# TODO: store this password securely somewhere!
+export SSHPASS=PASSWORD_GOES_HERE
+
+sshpass -e ssh -t -l toor "$@"
