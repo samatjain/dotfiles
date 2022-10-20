@@ -57,6 +57,7 @@ let mapleader=","
 " Display trailing whitespace
 " Toggle with ,s
 "set listchars=tab:>-,trail:·,eol:$
+set list
 set listchars=tab:»·,trail:·,precedes:<,extends:>
 nmap <silent> <leader>s :set nolist!<CR>
 
@@ -124,9 +125,11 @@ cmap w!! %!sudo tee > /dev/null %
 "  and then symlink into autoload directory
 "  `mkdir -p ~/.config/vim/autoload/ && ln -s /usr/share/vim/addons/autoload/pathogen.vim ~/.config/vim/autoload/`
 "  or run `vim-addons install pathogen`
-runtime! autoload/pathogen.vim
+if !exists("*pathogen#infect")
+	runtime! autoload/pathogen.vim
+endif
 if exists("*pathogen#infect")
-    call pathogen#infect()
+	call pathogen#infect()
 endif
 
 function! NumberToggle()
