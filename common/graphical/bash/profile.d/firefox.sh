@@ -5,10 +5,17 @@ export JSGC_DISABLE_POISONING=1
 
 # Use xinput2
 # See https://news.ycombinator.com/item?id=18974228
-export MOZ_USE_XINPUT2=1
+# Disabled on desktops; scrolling can lag.
+#export MOZ_USE_XINPUT2=1
 
 # Use WebRender
-export MOZ_WEBRENDER=1
+# Equivalent of gfx.webrender.all = true
+# Enabled by default on Firefox >= 89
+# Disabled; causes deadlocks? Use pref instead.
+#export MOZ_WEBRENDER=1
+# Enable acceleration on Linux.
+# Equivalent of layers.acceleration.force-enabled = true
+export MOZ_ACCELERATED=1
 
 # Native KDE file dialogs for Firefox and Thunderbird
 # See https://www.reddit.com/r/linux/comments/a59ip5/firefox_640_released/eblfwcb/
