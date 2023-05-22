@@ -34,7 +34,6 @@
 	st = status -sb
 	ci = commit
 	co = checkout
-	cp = cherry-pick
 	sw = switch
 	br = branch
 	diff = diff --word-diff
