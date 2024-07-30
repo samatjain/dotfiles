@@ -1,0 +1,10 @@
+[Unit]
+Description=XSETTINGS-protocol daemon
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/xsettingsd
+Slice=session.slice
+
+[Install]
+WantedBy=default.target
