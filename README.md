@@ -42,15 +42,13 @@ The configuration in this repository will work best w/ additional system package
 ### Debian and Ubuntu
 
     sudo aptitude install \
-      python-pygments # Provides pygmentize for lessfilter \
+      python3-pygments # Provides pygmentize for lessfilter \
       vim-addon-manager # Debian/Vim addons manager \
       vim-pathogen \
-      vim-syntastic \
-      vim-editorconfig
+      vim-syntastic
 
 After running the above, to install vim plugins for the current user:
 
     vim-addons install pathogen
-    vim-addons install editorconfig
     vim-addons install syntastic
 
