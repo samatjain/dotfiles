@@ -1,3 +1,18 @@
-#!/bin/sh
+#!/bin/bash
 
-mkdir -p "$XDG_CACHE_HOME/pip/downloads"
+mkdir -p "$XDG_STATE_HOME/pip/"
+
+# Remove old cached downloads
+rm -rf "$XDG_CACHE_HOME/pip/downloads/"
+
+# Move old log, merge if necessary
+if [[ -f "$XDG_CACHE_HOME/pip/log" ]]; then
+	mv "$XDG_CACHE_HOME/pip/log" "$XDG_STATE_HOME/pip/log.old"
+	if [[ -f "$XDG_STATE_HOME/pip/log" ]]; then
+		cat "$XDG_STATE_HOME/pip/log.old" "$XDG_STATE_HOME/pip/log" >"$XDG_STATE_HOME/pip/log.merged"
+		mv "$XDG_STATE_HOME/pip/log.merged" "$XDG_STATE_HOME/pip/log"
+		rm "$XDG_STATE_HOME/pip/log.old"
+	else
+		mv "$XDG_STATE_HOME/pip/log.old" "$XDG_STATE_HOME/pip/log"
+	fi
+fi
