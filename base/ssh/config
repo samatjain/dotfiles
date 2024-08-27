@@ -261,3 +261,4 @@ Host *
 	GSSAPIAuthentication no
 	# OpenSSH 8.5 default; do not check host IP against known_hosts
 	CheckHostIP False
+	StrictHostKeyChecking accept-new
