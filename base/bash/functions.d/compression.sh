@@ -16,3 +16,4 @@ unzip-strip() {
 
 # Max non-ultra compression, use all threads, rsyncable
 alias zstd-max="zstd -z -19 -T0 --rm --rsyncable"
+alias zstd-ultra="zstd -z --ultra -22 -T0 --rm"
