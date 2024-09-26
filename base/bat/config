@@ -6,5 +6,7 @@
 --map-syntax=*.conf:INI
 # Use .ini format for systemd .service files
 --map-syntax=*.service:INI
+# Use make format for justfiles
+--map-syntax=justfile:Makefile
 # Display tabs as 2 spaces
 --tabs=2
