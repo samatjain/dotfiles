@@ -22,11 +22,16 @@ if [[ -n $_BAT_CMD ]]; then
 
 	alias bat=$_BAT_CMD
 	alias batcat=$_BAT_CMD
-	alias batp="$_BAT_CMD --style plain --wrap=never"
+	alias batp="$_BAT_CMD --style plain --wrap=never"  # deprecated alias for pp
+	alias pp="$_BAT_CMD --style plain --wrap=never"  # "plain" pager, no line numbers
+	alias pf="$_BAT_CMD --style full --wrap=never"  # all bat features enabled
 else
 	alias bat="cat"
 	alias batcat="cat"
 	alias batp="cat"
+	alias p="cat"
+	alias pp="cat"
+	alias pf="cat"
 fi
 
 unset _BAT_CMD
