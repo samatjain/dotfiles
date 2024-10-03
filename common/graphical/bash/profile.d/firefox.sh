@@ -5,8 +5,8 @@ export JSGC_DISABLE_POISONING=1
 
 # Use xinput2
 # See https://news.ycombinator.com/item?id=18974228
-# Disabled on desktops; scrolling can lag.
-#export MOZ_USE_XINPUT2=1
+# NOTE: On desktops, scrolling may lag.
+export MOZ_USE_XINPUT2=1
 
 # Use WebRender
 # Equivalent of gfx.webrender.all = true
