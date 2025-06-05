@@ -13,4 +13,11 @@ if [[ -n $_FD_CMD ]]; then
 	alias fdfind=$_FD_CMD
 fi
 
+# Pipe to this alias to output find/fd's output as a tree, e.g.
+#
+#     fd -e py | as-tree
+#
+# ref: https://github.com/sharkdp/fd#printing-the-output-as-a-tree
+alias as-tree="tree --fromfile"
+
 unset _FD_CMD
