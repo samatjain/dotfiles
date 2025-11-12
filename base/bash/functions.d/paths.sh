@@ -68,3 +68,8 @@ fix-permissions() {
 	fdfind -td -X chmod 755
 	fdfind -tf -X chmod 644
 }
+
+# Backup a file, suffixed w/ it's last modified date
+backup-file() {
+	cp -av "$1" "$1".$(date '+%Y%m%d' -r "$1").bak
+}
