@@ -4,12 +4,12 @@
 # zsh compatible
 # From: https://node.mu/2010/11/24/is-your-bash-prompt-cramping-your-style/
 cd() {
-    if [[ $@ == '-' ]]; then
-        builtin cd "$@" > /dev/null  # We'll handle pwd.
-    else
-        builtin cd "$@"
-    fi
-    echo -e "    \033[1;30m""$(builtin pwd)""\033[0m"
+	if [[ $@ == '-' ]]; then
+		builtin cd "$@" >/dev/null # We'll handle pwd.
+	else
+		builtin cd "$@"
+	fi
+	echo -e "    \033[1;30m""$(builtin pwd)""\033[0m"
 }
 
 # CWD's basename
@@ -34,7 +34,10 @@ ppwd() {
 
 cl() { cd "$1" || exit && ls; }
 # Create and change into a directory
-mkcd() { mkdir -p "$1"; cd "$1" || exit; }
+mkcd() {
+	mkdir -p "$1"
+	cd "$1" || exit
+}
 
 # Print the full path to a file
 fp() {
@@ -60,6 +63,8 @@ fpl() {
 }
 
 fix-permissions() {
-  fd -t d -0 | xargs -0 -P 0 chmod 755 || true
-  fd -t f -0 | xargs -0 -P 0 chmod 644 || true
+	# fdfind -t d -0 | xargs -0 -P 0 chmod 755 || true
+	# fdfind -t f -0 | xargs -0 -P 0 chmod 644 || true
+	fdfind -td -X chmod 755
+	fdfind -tf -X chmod 644
 }
