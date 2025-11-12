@@ -18,7 +18,7 @@ export HISTCONTROL="ignoredups"
 export HISTTIMEFORMAT="%FT%R%z "
 
 # Colored grep
-export GREP_COLOR='1;33'
+export GREP_COLOR='mt=1;33'
 
 # less configuration
 # * -Q: do not beep
