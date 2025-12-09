@@ -22,3 +22,7 @@ setenv SSH_AUTH_SOCK "$HOME/.screen/ssh-auth-sock.$HOSTNAME"
 #defbce "on"
 #
 ##term "screen-256color"
+truecolor on
+
+# https://unix.stackexchange.com/a/505703/3716
+termcapinfo xterm*|rxvt*|kterm*|Eterm* ti@:te@
