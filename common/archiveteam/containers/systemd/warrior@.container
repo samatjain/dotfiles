@@ -1,0 +1,25 @@
+[Unit]
+Description=archiveteam warrior for %i
+
+[Container]
+Image=atdr.meo.ws/archiveteam/warrior-dockerfile
+
+PublishPort=8001:8001
+
+Environment=DOWNLOADER=samat
+Environment=SELECTED_PROJECT=%i
+Environment=CONCURRENT_ITEMS=6
+
+AutoUpdate=registry
+
+[Service]
+Restart=on-success
+RestartSec=60
+# Extend Timeout to allow time to pull the image
+TimeoutStartSec=600
+
+[Install]
+# Start by default on boot
+WantedBy=multi-user.target default.target
+# name of archiveteam project
+DefaultInstance=auto
