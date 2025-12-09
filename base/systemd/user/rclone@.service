@@ -1,0 +1,38 @@
+# Based on:
+# • https://pixeldrain.com/filesystem#toc_6
+# • https://www.guyrutenberg.com/2021/06/25/autostart-rclone-mount-using-systemd/
+# • https://github.com/hekmon/rclonemount — has VFS warming script
+# • https://gist.github.com/kabili207/2cd2d637e5c7617411a666d8d7e97101
+[Unit]
+Description=rclone: mount cloud storage remote %i
+Documentation=man:rclone(1)
+After=network-online.target
+Wants=network-online.target
+AssertPathIsDirectory=%h/Mount/%i
+StartLimitBurst=5
+
+[Service]
+Type=notify
+ExecStartPre=/usr/bin/mkdir -p %h/Mount/%i
+ExecStart=rclone mount \
+    --config=%h/.config/rclone/rclone.conf \
+    --vfs-cache-mode full \
+    --vfs-cache-max-age 720h \
+    --vfs-cache-min-free-space 50G \
+    --vfs-write-back 10s \
+    --dir-cache-time 10m \
+    --log-level INFO \
+    %i: %h/Mount/%i
+#    --file-perms 0700 \
+#    --dir-perms 0700 \
+#    --allow-other \
+ExecReload=/bin/kill -SIGHUP $MAINPID
+# FS busy will cause this to fail: https://forum.rclone.org/t/rclone-mount-on-startup-with-systemd/360/22
+ExecStop=/usr/bin/fusermount -zu %h/Mount/%i
+
+KillSignal=SIGINT
+TimeoutStartSec=600
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
