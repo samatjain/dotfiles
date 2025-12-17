@@ -60,7 +60,7 @@ elif [[ -f "$HOME/.keychain/$(hostname)-sh" ]]; then
         source "$HOME/.keychain/$(hostname)-sh"
 fi
 
-for file in ~/.config/{shell,bash}/profile.d/*; do
+for file in ~/.config/{shell,bash}/profile.d/*.sh; do
     [[ -e $file ]] && . "$file"
 done
 
