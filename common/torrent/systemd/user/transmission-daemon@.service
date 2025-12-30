@@ -8,19 +8,23 @@
 # See also:
 # - https://github.com/transmission/transmission/blob/master/daemon/transmission-daemon.service
 [Unit]
-Description=Transmission BitTorrent Daemon for %u
+Description=Transmission BitTorrent Daemon for %i
 After=network.target
 #RequiresMountsFor=/mnt/somewhere
 
 [Service]
 Type=notify
 IOSchedulingClass=idle
-ExecStart=/usr/bin/transmission-daemon --foreground
+ExecStart=/usr/bin/transmission-daemon --foreground --config-dir %h/.config/transmission-daemon/%i/
 ExecReload=/bin/kill -s HUP $MAINPID
 Restart=always
 NoNewPrivileges=true
 MemoryDenyWriteExecute=true
-TimeoutStartSec=3600
+TimeoutStartSec=infinity
+Environment="TSMU_PROFILE=%i"
+# IPv4 only, from https://github.com/transmission/transmission/issues/5362#issuecomment-1542623243
+# RestrictAddressFamilies=AF_UNIX AF_INET
 
 [Install]
 WantedBy=default.target
+DefaultInstance=Default
