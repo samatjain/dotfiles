@@ -34,3 +34,8 @@ alias tsm=transmission-remote
 alias ap=ansible-playbook
 
 alias j=just
+
+# What's my local IP? Figure out what IP will be the src if we tried to access Google DNS
+# from: https://stackoverflow.com/a/49552792/14878
+alias local-ip4="ip --json route get to 8.8.8.8 | jq -r .[].prefsrc"
+alias local-ip6="ip --json route get to 2001:4860:4860::8888 | jq -r .[].prefsrc"
