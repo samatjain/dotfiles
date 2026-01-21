@@ -10,5 +10,7 @@
 --map-syntax=justfile:Makefile
 # Use HCL for HOCON (maybe nginx is better?)
 --map-syntax=*.hocon:Terraform
+# Use DotENV for *.envrc
+--map-syntax=*.envrc:DotENV
 # Display tabs as 2 spaces
 --tabs=2
