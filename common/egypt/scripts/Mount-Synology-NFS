@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -o errexit -o nounset -o pipefail  # bash strict mode
+set -o xtrace  # tracing
+
+if [[ "$#" -lt 1 ]]; then
+	echo "Usage: Mount-Synology-NFS.sh [SYNOLOGY_DEVICE_HOSTNAME] [SHARE_NAME]"
+	exit 1
+fi
+_synology_hostname=$1
+# strip trailing slash
+_synology_hostname=${_synology_hostname%/}
+# Strip trailing .local
+_synology_hostname=${_synology_hostname%.local}
+_share_name=${2:-archive}
+shift
+
+mkdir -p "$_synology_hostname"
+_ip_address=$(avahi-resolve -4 --name "${_synology_hostname}.local" | cut -f2)
+#sudo mount -t nfs -o username=admin,password=${SYNOLOGY_PASSWORD},uid=$(id -u xjjk),gid=$(id -u xjjk) $_synology_hostname.local:archive $_synology_hostname
+sudo mount -t nfs "$_ip_address":/volume1/"$_share_name" "$_synology_hostname"
