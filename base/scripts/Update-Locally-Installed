@@ -3,4 +3,6 @@
 { cargo install-update --all; } &
 { uv tool upgrade --all; } &
 { npm update -g; } &
+{ sudo flatpak update --system -y; } &
+{ flatpak update --user -y; } &
 wait

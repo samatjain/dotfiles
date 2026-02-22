@@ -46,3 +46,8 @@ export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgrep.rc"
 
 # Less history file location
 export LESSHISTFILE="$XDG_CACHE_HOME/less_history"
+
+# Claude Code
+export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude/"
+# OpenAI Codex
+export CODEX_HOME="$XDG_CONFIG_HOME/codex/"
