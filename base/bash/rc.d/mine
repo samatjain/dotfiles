@@ -102,8 +102,14 @@ function time-stamp-w3cdtf() { date --utc --iso-8601=seconds | sed 's/+00.00/Z/'
 function time-stamp-w3cdtf-local() { date --iso-8601=seconds | sed 's/+00.00/Z/'; }
 function time-stamp-readable() { date '+%Y%m%d-%H%M%S-%a-%b-%d-%Y'; }
 function time-stamp-readable-lowercase() { date '+%Y%m%d-%H%M%S-%a-%b-%d-%Y' | tr '[A-Z]' '[a-z]'; }
-# Used by Anna's Archive
+# Anna's Archive Container time stamp, e.g. 20251203T231221Z
 function time-stamp-aac() { date --utc --iso-8601=seconds | sed -e 's/+00.00/Z/' -e 's/-//g' -e 's/://g'; }
+# Year–month–week number stamp, e.g. 202512.48
+function week-stamp { date --utc '+%Y%m.%W'; }
+# ISO Year–week number stamp, e.g. 2025-W48
+function iso-week-stamp { date --utc '+%G-W%V'; }
+# ISO Year–week number–day-of-week stamp, e.g. 2025-W48-3
+function iso-week-date-stamp { date --utc '+%G-W%V-%w'; }
 
 # e.g prepend PATH /usr/local/bin
 function prepend() { [ -d "$2" ] && eval $1=\"$2\$\{$1:+':'\$$1\}\" && export $1 ; }
