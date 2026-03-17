@@ -1,0 +1,13 @@
+#!/bin/sh -e
+#
+#    col-1 - handy hack to print the last column from standard in
+#
+#    Meant to be col "minus -1". Based on col1…9 from byobu.
+if [ $# -gt 0 ]; then
+    ifs='-F'"$1"
+    shift || true
+else
+    ifs="-F "
+fi
+b=$(basename $0)
+awk "$ifs" '{print $NF}' "$@"
