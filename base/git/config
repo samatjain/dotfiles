@@ -1,6 +1,6 @@
 [core]
 #	excludesfile = ~/.config/git/ignore
-	pager = less -XF
+	pager = delta
 
 	# Treat spaces before tabs and all kinds of trailing whitespace as an error.
 	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
@@ -120,7 +120,7 @@
 [include]
 	path = user
 [merge]
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
 [submodule]
@@ -131,3 +131,10 @@
 	defaultBranch = trunk
 [blame]
 	ignoreRevsFile = .git-blame-ignore-revs
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true  # use n and N to move between diff sections
+	dark = true      # or light = true, or omit for auto-detection
