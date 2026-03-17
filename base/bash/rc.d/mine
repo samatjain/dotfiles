@@ -22,11 +22,27 @@ if [[ -t 0 ]]; then
 fi
 
 alias ls="ls --color=auto -b -T 0 -h"
-alias ll="ls --color=auto -b -T 0 -l -h"
-alias lll="ls --color=yes -b -T 0 -l -h | less -r"
-alias la="ls --color=auto -b -T 0 -l -h -A"
-alias sl=ls
-alias less="less -rfsm"
+# alias ll="ls --color=auto -b -T 0 -l -h"
+# alias lll="ls --color=yes -b -T 0 -l -h | less -r"
+alias l=exa
+alias ll="exa --long --no-permissions --no-user --sort=new"
+alias lln="exa --long --no-permissions --no-user --sort=name"
+alias lls="exa --long --no-permissions --no-user --sort=size"
+llp () {
+	# -F quit if we have less than one screen to display
+	# -R allow colors
+	# -X don't clear screen after exit
+	exa --long --no-permissions --no-user --sort=new --color=always "$@" | batp --pager='less --quit-if-one-screen --RAW-CONTROL-CHARS --no-init +G'
+}
+llnp () {
+	# -F quit if we have less than one screen to display
+	# -R allow colors
+	# -X don't clear screen after exit
+	exa --long --no-permissions --no-user --sort=name --color=always "$@" | batp --pager='less --quit-if-one-screen --RAW-CONTROL-CHARS --no-init +G'
+}
+# alias la="ls --color=auto -b -T 0 -l -h -A"
+# alias sl=ls
+alias less="less --long-prompt --RAW-CONTROL-CHARS --squeeze-blank-lines"
 alias cls="clear"
 alias vim="vim -X"
 alias e="$EDITOR"
