@@ -1,0 +1,64 @@
+#!/usr/bin/env -S pipx run --path
+# /// script
+# requires-python = ">=3.13"
+# dependencies = [
+#     "anyio[trio]",
+#     "typer",
+# ]
+# ///
+import functools
+import sys
+from pathlib import Path
+
+import anyio
+import typer
+
+app = typer.Typer()
+
+
+async def upfind(target: str, parent_only: bool = False) -> str | None:
+    """
+    Search for a target file/directory in parent directories.
+
+    Args:
+        target: The file or directory to search for
+        parent_only: If True, print only the parent directory; if False, print
+            the found path
+
+    Returns:
+        The path where the target was found, or None if not found
+    """
+    current = Path.cwd().resolve()
+
+    while current != current.parent:
+        if (current / target).exists():
+            path_to_print = current if parent_only else (current / target)
+            await _print_with_colors(path_to_print)
+            return str(current)
+        current = current.parent
+
+    return None
+
+
+async def _print_with_colors(path: Path) -> None:
+    """Print a path with colors if stdout is a terminal."""
+    if sys.stdout.isatty():
+        await anyio.run_process(f"echo {str(path)} | lscolors", stdout=None)
+    else:
+        print(path)
+
+
+@app.command()
+def main(
+    target: str = typer.Argument(..., help="File or directory to search for"),
+    parent_only: bool = typer.Option(
+        False, "--parent-only", help="Print only the parent directory of the found path"
+    ),
+) -> None:
+    """Search for a file/directory in parent directories."""
+    r = anyio.run(functools.partial(upfind, target, parent_only), backend="trio")
+    raise typer.Exit(code=0 if r else 1)
+
+
+if __name__ == "__main__":
+    app()
