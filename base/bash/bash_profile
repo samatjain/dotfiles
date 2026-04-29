@@ -60,6 +60,9 @@ elif [[ -f "$HOME/.keychain/$(hostname)-sh" ]]; then
         source "$HOME/.keychain/$(hostname)-sh"
 fi
 
+# Disable ssh-askpass, set on Kubuntu 26.04
+export SSH_ASKPASS_REQUIRE=never
+
 for file in ~/.config/{shell,bash}/profile.d/*.sh; do
     [[ -e $file ]] && . "$file"
 done
