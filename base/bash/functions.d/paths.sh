@@ -71,5 +71,5 @@ fix-permissions() {
 
 # Backup a file, suffixed w/ it's last modified date
 backup-file() {
-	cp -av "$1" "$1".$(date '+%Y%m%d' -r "$1").bak
+	cp -av "$1" "$1".$(date '+%Y%m%d-%H%M%S' -r "$1").bak
 }
