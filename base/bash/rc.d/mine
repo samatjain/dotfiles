@@ -84,7 +84,7 @@ alias ssh-no-hostkey="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecki
 function ssh-reagent() {
 	ssh-agent -u  # delete stale sockets
 	# go through latest 3 sockets and attempt to add
-	for agent in $(find /tmp/ssh-* "$HOME"/.ssh/agent -type s -printf '%T@ %p\n' 2>/dev/null | sort -rn | cut -d' ' -f2- | head -n3); do
+	for agent in $(find "$HOME"/.ssh/agent /tmp/ssh-* -type s -printf '%T@ %p\n' 2>/dev/null | sort -rn | cut -d' ' -f2- | head -n3); do
 		export SSH_AUTH_SOCK=$agent
 		if ssh-add -l 2>&1 > /dev/null; then
 			echo Found working SSH Agent:
