@@ -1,2 +1,2 @@
 # Debian/Ubuntu systems
-export TZ=${TZ:-":$(cat /etc/timezone)"}
+export TZ=${TZ:-":$(timedatectl show --property=Timezone --value)"}
